@@ -42,7 +42,7 @@ rule successes must not be attributed to model capability.
 node dist/cli.js bench --suite smoke --backend cpu
 node dist/cli.js bench --suite dev --backend cpu
 node dist/cli.js bench --suite sampling --backend cpu
-node dist/cli.js bench --suite freeze --set instruction
+node dist/cli.js bench --suite freeze --set examples
 node dist/cli.js bench --suite oracle --backend cpu
 node dist/cli.js bench --suite holdout --backend cpu
 node dist/cli.js bench --suite performance --backend cpu
@@ -54,6 +54,13 @@ node dist/cli.js report --run latest
 `node dist/bench/research.js` orchestrates that sequence and shared-prompt selection.
 Existing datasets are not regenerated automatically. Interrupted folders retain their rows;
 reports mark missing completion or model exceptions. A rerun creates a new folder.
+
+The published run uses dataset revision 3. A source inspection found shared task skeletons
+in the original split; its partial holdout was superseded. All 280 holdout strings were
+replaced with distinct task families while the 120 development inputs remained byte-identical.
+Prompt/model settings were retained from development; the superseded holdout's scores did
+not inform construction or tuning. Synthetic annotation and human-review limits still apply.
+The terminal model path loads the same frozen prompt and checks its hash before generation.
 
 ## Measurement and review
 
@@ -89,4 +96,4 @@ The combined resident budget measures Node plus inference child, excluding the W
 
 Annotation-only review: node dist/cli.js review --annotations. Import an exported annotation decision file with --annotations --decisions <file>. Batches merge by fixture ID. All 400 frozen annotations must be accepted before a qualification run; later corrections require a new dataset/holdout or an explicitly labelled development rerun. Current unattended runs are provisional, with that gate pending. Output decisions are imported separately. Passing measured/human gates still does not authorize automatic submission.
 
-The primary performance report includes one-pass identity/rules calibration controls. Ten warm repetitions of each baseline are measured separately in reports/baseline-performance.json. Use that file for baseline warm latency. Live automated status is persisted in plans/local-tone-editor/execution-progress.json; it records completed rows and verification gates without prompt bodies.
+The primary performance report includes one-pass identity/rules calibration controls. Ten warm repetitions of each baseline are measured separately in reports/baseline-performance.json. Use that file for baseline warm latency. Published aggregate measurements are in docs/benchmark-summary.json. Raw reports, native binaries, model weights and private execution plans are excluded from Git and are generated locally.

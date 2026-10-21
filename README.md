@@ -69,7 +69,7 @@ From this repository, choose the existing project directory that Claude should w
 node dist/cli.js chat --preview --cwd "../your-project"
 ```
 
-The wrapper uses Claude's existing authentication and permission behavior. It adds no bypass flags, implicit session continuation, or stock-terminal emulation. Only the approved final text is passed through stdin.
+The wrapper uses Claude's existing authentication and permission behavior. It adds no bypass flags, implicit session continuation, or stock-terminal emulation. Only the approved final text is passed through stdin. The one-turn response is Claude's structured JSON output.
 
 A native Claude executable must be available. On Windows, npm-installed native Claude is also recognized; use `--claude <native-path>` to select another installation. Shell shims such as `.cmd`, `.bat`, and `.ps1` are not launched by the wrapper.
 

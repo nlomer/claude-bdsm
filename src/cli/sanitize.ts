@@ -1,5 +1,4 @@
 // Controller: preview/output approval, local statistics, and an optional single approved downstream turn.
-import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { loadConsent } from '../features/consent.js';
 import { processMessage } from '../features/process.js';
@@ -14,6 +13,7 @@ import { submit } from '../integrations/claude-wrapper.js';
 import { locateClaude } from '../integrations/locate-claude.js';
 import type { Tone } from '../core/types.js';
 import { registry } from '../runtime/registry.js';
+import { modelPrompt } from './model-prompt.js';
 export async function sanitizeCommand(root: string, args: Options): Promise<number> {
   if (args.positional.length) throw new Error('INPUT_MUST_USE_STDIN');
   if (args.command === 'chat' && args.flags.has('--json')) throw new Error('CHAT_JSON_OPTION_UNSUPPORTED');
@@ -31,7 +31,7 @@ export async function sanitizeCommand(root: string, args: Options): Promise<numb
     if (model && item.result.reasons.includes('MODEL_UNAVAILABLE')) {
       server = await LlamaServer.start(root, model, false);
       item = await processMessage(text, config, { ...options, adapter: server,
-        prompt: await readFile(resolve(root, 'prompts/instruction.txt'), 'utf8') });
+        prompt: await modelPrompt(root) });
     }
     const result = item.result;
     await server?.close(); server = undefined;
