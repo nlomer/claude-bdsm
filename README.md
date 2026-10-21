@@ -10,7 +10,7 @@ You idiot. Fix src/auth.ts; do not change the public API.
 I'm frustrated with the previous result. Fix src/auth.ts; do not change the public API.
 ```
 
-Runs locally on your CPU. Start with the instant rules engine, or try the optional ~105 MB local model. You preview and approve the final text before it is passed to Claude.
+Runs locally on your CPU. Start with the instant rules engine; optional model experiments require separate downloads. You preview and approve the final text before it is passed to Claude.
 
 This is a preview-first release. Model experiments are provisional, and human fidelity review is pending. It is not an official compliance classifier or a promise that every insult will be detected.
 
@@ -73,15 +73,19 @@ The wrapper uses Claude's existing authentication and permission behavior. It ad
 
 A native Claude executable must be available. On Windows, npm-installed native Claude is also recognized; use `--claude <native-path>` to select another installation. Shell shims such as `.cmd`, `.bat`, and `.ps1` are not launched by the wrapper.
 
-## Try the smallest model candidate
+## Choose an optional model
 
 SmolLM2-135M-Instruct Q4_K_M is approximately **105.5 MB of weights**, excluding the runtime, Node, and working memory. Larger candidates are not installed by default.
 
+**Smallest does not mean sufficient:** the 135M hybrid passed the automatic rewrite proxy on 122/150 holdout cases, versus 120/150 for rules alone. It misses the proposed 90% coverage threshold. The 270.6 MB 360M hybrid reached 140/150 and is the smallest tested candidate above that provisional threshold; human fidelity review is still pending for every model. Use rules first and consult the [measured comparison](BENCHMARK-RESULTS.md) before downloading an experiment.
+
 ```sh
 node dist/cli.js runtime install
-node dist/cli.js models install smol-135m-q4km
-node dist/cli.js sanitize --model smol-135m-q4km --mode hybrid --preview
+node dist/cli.js models install smol-360m-q4km
+node dist/cli.js sanitize --model smol-360m-q4km --mode hybrid --preview
 ```
+
+To inspect the absolute smallest tested experiment instead, substitute `smol-135m-q4km` in both commands. Only the model you name is downloaded.
 
 Hybrid mode checks rules and review conditions first, loading the model only when a bounded model rewrite is actually needed. The model is unloaded before waiting for approval or invoking Claude. Model-generated changes always require approval.
 

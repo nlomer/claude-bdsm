@@ -12,7 +12,7 @@ node "${CLAUDE_SKILL_DIR}/scripts/manage.mjs" doctor
 
 If missing or unbuilt, read [setup instructions](references/setup.md). The companion requires Node 22. The skill installer records its clone path locally and never overwrites existing skills or global settings.
 
-For requested setup/configuration, use that helper with `runtime install`, `models install <registry-id>`, `config`, or `stats`. Setup networking is explicit and downloads verified artifacts. Start with the smallest benchmark candidate, `smol-135m-q4km`, only as an optional preview experiment; do not claim qualification before measured/human evidence. Never silently substitute model/quantization. Installed inference is authenticated loopback-only, with no cloud fallback.
+For requested setup/configuration, use that helper with `runtime install`, `models install <registry-id>`, `config`, or `stats`. Setup networking is explicit and downloads verified artifacts. Start with rules. The smallest candidate, `smol-135m-q4km` (~105 MB), adds little over rules and misses the provisional coverage threshold. `smol-360m-q4km` (~271 MB) is the smallest tested hybrid above that automatic threshold, but all models remain preview experiments pending human fidelity review. Read the companion's BENCHMARK-RESULTS.md before recommending a model; compare full response time and quality, not size alone. Never silently substitute model/quantization. Installed inference is authenticated loopback-only, with no cloud fallback.
 
 Default to neutral rules with preview. Every preview output needs exact-output approval, including unchanged text; model changes always require approval even if rule previews are disabled. Benchmark scores and lexical proxies do not replace human fidelity review.
 

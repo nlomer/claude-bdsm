@@ -8,6 +8,7 @@ import { conclusion } from './conclusion.js';
 import { json, saveJson } from '../runtime/files.js';
 import { runProcess } from '../runtime/process.js';
 import { baselinePerformance } from './baseline-performance.js';
+import { cliPerformance } from './cli-performance.js';
 const root = process.cwd(), ownerPid = Number(process.argv[2]);
 let done = false;
 while (!done) {
@@ -34,6 +35,7 @@ for (const [name, args] of [
   receipts[name] = { exitCode: 0, output: await runProcess(process.execPath, args, root) };
   await saveJson(resolve(root, 'reports/verification.json'), { at: new Date().toISOString(), platform: process.platform, receipts });
 }
+await cliPerformance(root);
 await conclusion(root);
 const evidence = await json<{ evaluationComplete: boolean }>(resolve(root, 'plans/local-tone-editor/final-evidence.json'));
 if (!evidence.evaluationComplete) throw new Error('EVALUATION_INCOMPLETE_INSPECT_FAILURE_FILES');

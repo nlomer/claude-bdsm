@@ -18,6 +18,7 @@ export async function conclusion(root: string): Promise<void> {
   const runtime = await json<RuntimeLock>(resolve(root, 'runtime.lock.json'));
   const { cold, runtimeDiskBytes, baselineTimings } = await researchFootprint(root, runtime, models);
   const settings = await json<{ prompt: string; promptHash: string; datasetHashes: Record<string, string> }>(resolve(root, 'bench-settings.lock.json'));
+  const terminal = await json<{ definition: string; summary: unknown }>(resolve(root, 'reports/cli-performance.json'));
   const rows = models.map(model => ({ id: model.id, bytes: model.bytes, revision: model.revision, sha256: model.computedSha256,
     quality: quality.summary[`${model.id}/protected/${settings.prompt}`],
     hybrid: quality.summary[`${model.id}/hybrid/${settings.prompt}`],
@@ -27,7 +28,7 @@ export async function conclusion(root: string): Promise<void> {
   const rules = quality.summary[`none/rules/${settings.prompt}`];
   const evidence = { completedAt: new Date().toISOString(), evaluationComplete: quality.completed && speed.completed,
     releaseDecision: 'RULES_WITH_PREVIEW_DEFAULT; MODELS_PREVIEW_ONLY_PENDING_HUMAN_REVIEW', humanReview: 'pending',
-    runtime, runtimeDiskBytes, cold, baselineTimings: baselineTimings.summary, settings, hardware: quality.manifest.hardware, rows, rules, pairedComparisons: quality.pairedComparisons, qualityGates: quality.qualityGates,
+    runtime, runtimeDiskBytes, cold, terminal: { definition: terminal.definition, summary: terminal.summary }, baselineTimings: baselineTimings.summary, settings, hardware: quality.manifest.hardware, rows, rules, pairedComparisons: quality.pairedComparisons, qualityGates: quality.qualityGates,
     runs: { holdout: holdoutPath, performance: performancePath },
     matrix: { windows: 'unit + mock wrapper + real CPU lifecycle + isolated installed hook tests executed; see verification receipt',
       linux: 'untested', gpu: 'untested / outside primary comparison', liveProvider: 'not tested or invoked', browserVisualReview: 'blocked file-URL preview; automated script/DOM escaping tests pass' } };
@@ -39,6 +40,7 @@ export async function conclusion(root: string): Promise<void> {
   lines.push('', `Installed runtime directory: ${runtimeDiskBytes} bytes, including the retained verified archive (${runtime.assets[process.platform]?.bytes} bytes). Weight bytes exclude runtime, Node, cards and application files.`, '',
     `Process-cold results (five restarts each, caches not cleared): ${JSON.stringify(cold)}. Setup-to-valid-first includes verification and is unknown where no valid first result occurred.`, '',
     `Ten-repeat warm identity/rules timings: ${JSON.stringify(baselineTimings.summary)}; full measurements in reports/baseline-performance.json.`, '',
+    `Complete terminal-turn diagnostic: ${JSON.stringify(terminal.summary)}. ${terminal.definition}`, '',
     'The rewrite proxy requires a completed changed output, exact annotated task suffix/literals and lexical attack removal. It is not a human tone/fidelity rating. Each full report contains denominators, 95% Wilson intervals and paired group-bootstrap comparisons. Warm failures are retained in latency distributions.', '',
     '## Questions and recommendation', '',
     `The approximately 105 MB model loaded and ran. Its broad-rewrite proxy is ${rows[0]?.quality ? fraction(rows[0].quality.provisionalRewriteCoverage) : 'unavailable'}. This does not qualify it for automatic rewriting; exact eligible case classes still need human review.`, '',
