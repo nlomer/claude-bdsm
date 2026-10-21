@@ -1,0 +1,7 @@
+# Constants: preserve frozen fixture/prompt bytes across Windows and Linux checkouts.
+* text=auto eol=lf
+*.jsonl text eol=lf
+*.txt text eol=lf
+*.json text eol=lf
+# The supplied design brief uses intentional Markdown hard line breaks.
+claude-bdsm-agent-plan.md whitespace=-blank-at-eol

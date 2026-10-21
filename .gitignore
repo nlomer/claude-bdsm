@@ -1,0 +1,12 @@
+node_modules/
+dist/
+dist-tests/
+.tools/
+backup/
+models/
+reports/
+*.log
+.env
+.local/
+plans/
+skills/*/installation.json

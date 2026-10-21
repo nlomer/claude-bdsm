@@ -1,0 +1,19 @@
+{
+  "name": "claude-bdsm",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Claude Code skill and local preview-first tone editor with optional tiny CPU models",
+  "license": "MIT",
+  "repository": { "type": "git", "url": "git+https://github.com/nlomer/claude-bdsm.git" },
+  "homepage": "https://github.com/nlomer/claude-bdsm#readme",
+  "bugs": { "url": "https://github.com/nlomer/claude-bdsm/issues" },
+  "type": "module",
+  "engines": { "node": ">=22.16.0 <23" },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && tsc -p tsconfig.test.json && node --test dist-tests/tests/unit/*.test.js",
+    "test:integration": "tsc -p tsconfig.test.json && node --test --test-concurrency=1 dist-tests/tests/integration/*.test.js",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "devDependencies": { "@types/node": "22.20.5", "typescript": "7.0.2" }
+}

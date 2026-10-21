@@ -1,0 +1,14 @@
+{
+  "prompt": "examples",
+  "promptHash": "ef0d36d17f0a8b0a7e4c535ace81a7e4b94d9b239d29a00f70824904d4eee42a",
+  "datasetHashes": {
+    "dev": "fdfd36fc7fdbbb47a038f5882576c040ec42c9a0110bb8de5b09d83c0ab9564f",
+    "holdout": "f0563c876e75ed2f78790a78da7a12fb71a91ce7670499a68b76ef7c4ccf68af"
+  },
+  "modelLockHash": "896c36fbe0b60e0dc61c476f76ca173d9d1131de1c04180f74d61d7d46c0dce0",
+  "runtimeLockHash": "80b07952b40515fb529b048a6e415e7c553276ad25d88751691e15242b0cfe89",
+  "temperature": 0,
+  "seed": 42,
+  "humanReview": "pending",
+  "selectionPolicy": "Shared primary; automatic structural evidence only; no release approval"
+}

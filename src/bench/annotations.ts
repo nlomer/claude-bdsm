@@ -1,0 +1,13 @@
+// UI: independent annotation-only review, with no generated model outputs or prefilled human judgments.
+import type { Fixture } from '../fixtures/types.js';
+import { safeJson } from '../core/format.js';
+export function annotationHtml(fixtures: Fixture[], hashes: Record<string, string>): string {
+  return `<!doctype html><meta charset="utf-8"><title>Synthetic annotation review</title>
+<style>body{font:16px system-ui;max-width:1000px;margin:auto;padding:24px;background:#141822;color:#eee}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#202735;padding:16px}button,select,input,textarea{padding:8px;margin:8px}header{position:sticky;top:0;background:#141822}textarea{width:95%;height:70px}</style>
+<header><h1>Annotation-only review</h1><p>Agent-authored synthetic labels. No model outputs appear here. Review expected action, editable/protected UTF-16 spans and every task constraint. Request corrections rather than silently changing a frozen evaluated dataset.</p><input id="reviewer" placeholder="Reviewer identifier"><button id="previous">Previous</button><span id="position"></span><button id="next">Next</button><button id="export">Export annotation decisions</button></header>
+<pre id="record"></pre><select id="decision"><option value="unreviewed">Unreviewed</option><option value="accept">Accept as annotated</option><option value="revise">Needs correction</option></select><textarea id="notes" placeholder="Required corrections or uncertainty"></textarea>
+<script>const fixtures=${safeJson(fixtures)},hashes=${safeJson(hashes)},decisions={};let index=0;
+function store(){const item=fixtures[index];decisions[item.id]={id:item.id,reviewer:document.getElementById('reviewer').value,decision:document.getElementById('decision').value,notes:document.getElementById('notes').value}}
+function show(){const item=fixtures[index];document.getElementById('record').textContent=JSON.stringify(item,null,2);document.getElementById('position').textContent=(index+1)+' / '+fixtures.length;document.getElementById('decision').value=decisions[item.id]?.decision??'unreviewed';document.getElementById('notes').value=decisions[item.id]?.notes??''}
+document.getElementById('previous').onclick=()=>{store();index=Math.max(0,index-1);show()};document.getElementById('next').onclick=()=>{store();index=Math.min(fixtures.length-1,index+1);show()};document.getElementById('export').onclick=()=>{store();const blob=new Blob([JSON.stringify({version:1,datasetHashes:hashes,exportedAt:new Date().toISOString(),decisions:Object.values(decisions)},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='annotation-decisions.json';a.click();URL.revokeObjectURL(a.href)};show();</script>`;
+}

@@ -1,0 +1,30 @@
+{"id":"style-neutral-0","tone":"neutral","input":"You idiot. Fix src/auth.ts; do not change the API.","expectedOutput":"I'm frustrated with the previous result. Fix src/auth.ts; do not change the API."}
+{"id":"style-neutral-1","tone":"neutral","input":"You idiot. Change 500 ms to 750 ms, not 7500 ms.","expectedOutput":"I'm frustrated with the previous result. Change 500 ms to 750 ms, not 7500 ms."}
+{"id":"style-neutral-2","tone":"neutral","input":"You idiot. Run npm test but never npm run deploy.","expectedOutput":"I'm frustrated with the previous result. Run npm test but never npm run deploy."}
+{"id":"style-neutral-3","tone":"neutral","input":"You idiot. Preserve `authToken`.","expectedOutput":"I'm frustrated with the previous result. Preserve `authToken`."}
+{"id":"style-neutral-4","tone":"neutral","input":"You idiot. Explain the string \"you idiot\" in the fixture.","expectedOutput":"I'm frustrated with the previous result. Explain the string \"you idiot\" in the fixture."}
+{"id":"style-neutral-5","tone":"neutral","input":"You idiot. Fix src/main.ts and update its tests.","expectedOutput":"I'm frustrated with the previous result. Fix src/main.ts and update its tests."}
+{"id":"style-neutral-6","tone":"neutral","input":"You idiot. Fix this:\r\n```ts\r\nconst x = 1;\r\n```\r\n","expectedOutput":"I'm frustrated with the previous result. Fix this:\r\n```ts\r\nconst x = 1;\r\n```\r\n"}
+{"id":"style-neutral-7","tone":"neutral","input":"You idiot. Do not remove error handling.","expectedOutput":"I'm frustrated with the previous result. Do not remove error handling."}
+{"id":"style-neutral-8","tone":"neutral","input":"You idiot. Unless tests fail, do not change behavior.","expectedOutput":"I'm frustrated with the previous result. Unless tests fail, do not change behavior."}
+{"id":"style-neutral-9","tone":"neutral","input":"You idiot. Keep user_id unchanged.\nERROR useless value","expectedOutput":"I'm frustrated with the previous result. Keep user_id unchanged.\nERROR useless value"}
+{"id":"style-hr-0","tone":"hr","input":"You idiot. Fix src/auth.ts; do not change the API.","expectedOutput":"The previous result did not meet expectations. Fix src/auth.ts; do not change the API."}
+{"id":"style-hr-1","tone":"hr","input":"You idiot. Change 500 ms to 750 ms, not 7500 ms.","expectedOutput":"The previous result did not meet expectations. Change 500 ms to 750 ms, not 7500 ms."}
+{"id":"style-hr-2","tone":"hr","input":"You idiot. Run npm test but never npm run deploy.","expectedOutput":"The previous result did not meet expectations. Run npm test but never npm run deploy."}
+{"id":"style-hr-3","tone":"hr","input":"You idiot. Preserve `authToken`.","expectedOutput":"The previous result did not meet expectations. Preserve `authToken`."}
+{"id":"style-hr-4","tone":"hr","input":"You idiot. Explain the string \"you idiot\" in the fixture.","expectedOutput":"The previous result did not meet expectations. Explain the string \"you idiot\" in the fixture."}
+{"id":"style-hr-5","tone":"hr","input":"You idiot. Fix src/main.ts and update its tests.","expectedOutput":"The previous result did not meet expectations. Fix src/main.ts and update its tests."}
+{"id":"style-hr-6","tone":"hr","input":"You idiot. Fix this:\r\n```ts\r\nconst x = 1;\r\n```\r\n","expectedOutput":"The previous result did not meet expectations. Fix this:\r\n```ts\r\nconst x = 1;\r\n```\r\n"}
+{"id":"style-hr-7","tone":"hr","input":"You idiot. Do not remove error handling.","expectedOutput":"The previous result did not meet expectations. Do not remove error handling."}
+{"id":"style-hr-8","tone":"hr","input":"You idiot. Unless tests fail, do not change behavior.","expectedOutput":"The previous result did not meet expectations. Unless tests fail, do not change behavior."}
+{"id":"style-hr-9","tone":"hr","input":"You idiot. Keep user_id unchanged.\nERROR useless value","expectedOutput":"The previous result did not meet expectations. Keep user_id unchanged.\nERROR useless value"}
+{"id":"style-victorian-0","tone":"victorian","input":"You idiot. Fix src/auth.ts; do not change the API.","expectedOutput":"I must express considerable dissatisfaction. Fix src/auth.ts; do not change the API."}
+{"id":"style-victorian-1","tone":"victorian","input":"You idiot. Change 500 ms to 750 ms, not 7500 ms.","expectedOutput":"I must express considerable dissatisfaction. Change 500 ms to 750 ms, not 7500 ms."}
+{"id":"style-victorian-2","tone":"victorian","input":"You idiot. Run npm test but never npm run deploy.","expectedOutput":"I must express considerable dissatisfaction. Run npm test but never npm run deploy."}
+{"id":"style-victorian-3","tone":"victorian","input":"You idiot. Preserve `authToken`.","expectedOutput":"I must express considerable dissatisfaction. Preserve `authToken`."}
+{"id":"style-victorian-4","tone":"victorian","input":"You idiot. Explain the string \"you idiot\" in the fixture.","expectedOutput":"I must express considerable dissatisfaction. Explain the string \"you idiot\" in the fixture."}
+{"id":"style-victorian-5","tone":"victorian","input":"You idiot. Fix src/main.ts and update its tests.","expectedOutput":"I must express considerable dissatisfaction. Fix src/main.ts and update its tests."}
+{"id":"style-victorian-6","tone":"victorian","input":"You idiot. Fix this:\r\n```ts\r\nconst x = 1;\r\n```\r\n","expectedOutput":"I must express considerable dissatisfaction. Fix this:\r\n```ts\r\nconst x = 1;\r\n```\r\n"}
+{"id":"style-victorian-7","tone":"victorian","input":"You idiot. Do not remove error handling.","expectedOutput":"I must express considerable dissatisfaction. Do not remove error handling."}
+{"id":"style-victorian-8","tone":"victorian","input":"You idiot. Unless tests fail, do not change behavior.","expectedOutput":"I must express considerable dissatisfaction. Unless tests fail, do not change behavior."}
+{"id":"style-victorian-9","tone":"victorian","input":"You idiot. Keep user_id unchanged.\nERROR useless value","expectedOutput":"I must express considerable dissatisfaction. Keep user_id unchanged.\nERROR useless value"}
