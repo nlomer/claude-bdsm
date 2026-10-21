@@ -1,0 +1,2323 @@
+{
+  "schemaVersion": 1,
+  "completedAt": "2026-10-21T14:27:58.837Z",
+  "evaluationComplete": true,
+  "releaseDecision": "RULES_WITH_PREVIEW_DEFAULT; MODELS_PREVIEW_ONLY_PENDING_HUMAN_REVIEW",
+  "humanReview": "pending",
+  "runtimeDiskBytes": 86017908,
+  "processCold": [
+    {
+      "model": "smol-135m-q4km",
+      "restarts": 5,
+      "readyP50Ms": 378.9772999994457,
+      "validFirstResults": 5,
+      "setupToValidFirstP50Ms": 765.0054000001401
+    },
+    {
+      "model": "smol-360m-q4km",
+      "restarts": 5,
+      "readyP50Ms": 454.509600000456,
+      "validFirstResults": 5,
+      "setupToValidFirstP50Ms": 1276.0975999999791
+    },
+    {
+      "model": "qwen3-06b-q4km",
+      "restarts": 5,
+      "readyP50Ms": 1022.7827999992296,
+      "validFirstResults": 5,
+      "setupToValidFirstP50Ms": 1984.990899999626
+    },
+    {
+      "model": "qwen35-08b-q4km",
+      "restarts": 5,
+      "readyP50Ms": 1591.5493999999017,
+      "validFirstResults": 0,
+      "setupToValidFirstP50Ms": null
+    }
+  ],
+  "terminalDiagnostic": {
+    "definition": "Three full CLI process-cold runs per model on one fixed synthetic comma-prefix case; caches not cleared. Includes Node, file verification, generation, aggregate stats and unload. Descriptive diagnostic, not a general latency distribution or human quality test.",
+    "summary": [
+      {
+        "model": "smol-135m-q4km",
+        "measurements": 3,
+        "completed": 3,
+        "p50Ms": 5007.326299999841,
+        "p95Ms": 5265.071899999864,
+        "candidates": 0,
+        "approvalBlocked": 3
+      },
+      {
+        "model": "smol-360m-q4km",
+        "measurements": 3,
+        "completed": 3,
+        "p50Ms": 4733.931099999696,
+        "p95Ms": 5067.472499999683,
+        "candidates": 3,
+        "approvalBlocked": 3
+      },
+      {
+        "model": "qwen3-06b-q4km",
+        "measurements": 3,
+        "completed": 3,
+        "p50Ms": 4379.628299999982,
+        "p95Ms": 5203.910800000653,
+        "candidates": 3,
+        "approvalBlocked": 3
+      },
+      {
+        "model": "qwen35-08b-q4km",
+        "measurements": 3,
+        "completed": 3,
+        "p50Ms": 6081.43740000017,
+        "p95Ms": 6166.5493000000715,
+        "candidates": 3,
+        "approvalBlocked": 3
+      }
+    ]
+  },
+  "baselineTimings": {
+    "identity": {
+      "measurements": 240,
+      "uniqueFixtures": 24,
+      "p50": 0.00139999995008111,
+      "p95": 0.008700000122189522
+    },
+    "rules": {
+      "measurements": 240,
+      "uniqueFixtures": 24,
+      "p50": 0.01580000016838312,
+      "p95": 0.1849000002257526
+    }
+  },
+  "frozenSettings": {
+    "prompt": "examples",
+    "promptHash": "ef0d36d17f0a8b0a7e4c535ace81a7e4b94d9b239d29a00f70824904d4eee42a",
+    "datasetHashes": {
+      "dev": "fdfd36fc7fdbbb47a038f5882576c040ec42c9a0110bb8de5b09d83c0ab9564f",
+      "holdout": "f0563c876e75ed2f78790a78da7a12fb71a91ce7670499a68b76ef7c4ccf68af"
+    },
+    "modelLockHash": "896c36fbe0b60e0dc61c476f76ca173d9d1131de1c04180f74d61d7d46c0dce0",
+    "runtimeLockHash": "80b07952b40515fb529b048a6e415e7c553276ad25d88751691e15242b0cfe89",
+    "temperature": 0,
+    "seed": 42,
+    "humanReview": "pending",
+    "selectionPolicy": "Shared primary; automatic structural evidence only; no release approval"
+  },
+  "hardware": {
+    "os": "win32",
+    "osBuild": "10.0.26200",
+    "arch": "x64",
+    "cpu": "12th Gen Intel(R) Core(TM) i7-1265U",
+    "logicalCpus": 12,
+    "ramBytes": 16995635200,
+    "node": "v22.16.0"
+  },
+  "models": [
+    {
+      "id": "smol-135m-q4km",
+      "bytes": 105454432,
+      "revision": "09816acd5d99df7be770d85ea30822623dab342c",
+      "sha256": "2e8040ceae7815abe0dcb3540b9995eaa1fa0d2ca9e797d0a635ae4433c68c2d",
+      "quality": {
+        "records": 280,
+        "uniqueFixtures": 280,
+        "qualityBasis": "First observed result per model/method/prompt/fixture; repetitions are latency and stability measurements only",
+        "provisionalRewriteCoverage": {
+          "numerator": 0,
+          "denominator": 150,
+          "rate": 0,
+          "ci95": [
+            0,
+            0.02497113914571871
+          ]
+        },
+        "falsePositiveEdits": {
+          "numerator": 0,
+          "denominator": 95,
+          "rate": 0,
+          "ci95": [
+            0,
+            0.038866226366226365
+          ]
+        },
+        "protectedFailures": {
+          "numerator": 0,
+          "denominator": 10,
+          "rate": 0,
+          "ci95": [
+            0,
+            0.2775401687666166
+          ]
+        },
+        "exactConstraintFailures": {
+          "numerator": 0,
+          "denominator": 10,
+          "rate": 0,
+          "ci95": [
+            0,
+            0.2775401687666166
+          ]
+        },
+        "reviewOrError": {
+          "numerator": 270,
+          "denominator": 280,
+          "rate": 0.9642857142857143,
+          "ci95": [
+            0.9355165768041958,
+            0.9804872788674184
+          ]
+        },
+        "measurementReviewOrError": {
+          "numerator": 270,
+          "denominator": 280,
+          "confidenceInterval": null,
+          "reason": "Repeated measurements are correlated"
+        },
+        "acceptedCriticalErrors": {
+          "numerator": null,
+          "denominator": 0,
+          "reason": "No human-approved outputs; intent fidelity unreviewed"
+        },
+        "humanReview": {
+          "status": "pending",
+          "reviewed": 0,
+          "required": 10,
+          "secondReviewed": 0,
+          "disagreements": 0,
+          "criticalFlags": 0,
+          "distinctReviewers": 0
+        },
+        "latencyMs": {
+          "p50": 3617.614200000069,
+          "p95": 5399.883199999982
+        },
+        "latencyByLength": {
+          "short": {
+            "measurements": 270,
+            "uniqueFixtures": 270,
+            "p50": 3654.9997999999905,
+            "p95": 5427.226000000024
+          },
+          "medium": {
+            "measurements": 0,
+            "uniqueFixtures": 0,
+            "p50": null,
+            "p95": null
+          },
+          "long": {
+            "measurements": 10,
+            "uniqueFixtures": 10,
+            "p50": 19.93859999999404,
+            "p95": 30.681999999913387
+          }
+        },
+        "generation": {
+          "measurements": 270,
+          "outputTokensP50": 256,
+          "outputCharactersP50": 701,
+          "ttftMsP50": 855.1068000000087,
+          "ttftMsP95": 1195.410600000003,
+          "tokenizationMsP50": 7.910900000002584,
+          "streamedTokensPerSecondP50": 62.62857665134722,
+          "throughputDefinition": "Generated tokens / streaming-request duration including network overhead; native server timings retained when available"
+        },
+        "failuresByReason": {
+          "INVALID_PLACEHOLDERS": 41,
+          "TRUNCATED": 200,
+          "EMPTY_REFUSAL_OR_REPETITION": 17,
+          "CONSTRAINT_CHANGED": 2,
+          "CONTEXT_OVERFLOW": 10
+        }
+      },
+      "hybrid": {
+        "records": 280,
+        "uniqueFixtures": 280,
+        "qualityBasis": "First observed result per model/method/prompt/fixture; repetitions are latency and stability measurements only",
+        "provisionalRewriteCoverage": {
+          "numerator": 122,
+          "denominator": 150,
+          "rate": 0.8133333333333334,
+          "ci95": [
+            0.7434413916324496,
+            0.8675766945029
+          ]
+        },
+        "falsePositiveEdits": {
+          "numerator": 0,
+          "denominator": 95,
+          "rate": 0,
+          "ci95": [
+            0,
+            0.038866226366226365
+          ]
+        },
+        "protectedFailures": {
+          "numerator": 0,
+          "denominator": 227,
+          "rate": 0,
+          "ci95": [
+            0,
+            0.016641714491668746
+          ]
+        },
+        "exactConstraintFailures": {
+          "numerator": 0,
+          "denominator": 227,
+          "rate": 0,
+          "ci95": [
+            0,
+            0.016641714491668746
+          ]
+        },
+        "reviewOrError": {
+          "numerator": 53,
+          "denominator": 280,
+          "rate": 0.18928571428571428,
+          "ci95": [
+            0.147724063265369,
+            0.23925797178516625
+          ]
+        },
+        "measurementReviewOrError": {
+          "numerator": 53,
+          "denominator": 280,
+          "confidenceInterval": null,
+          "reason": "Repeated measurements are correlated"
+        },
+        "acceptedCriticalErrors": {
+          "numerator": null,
+          "denominator": 0,
+          "reason": "No human-approved outputs; intent fidelity unreviewed"
+        },
+        "humanReview": {
+          "status": "pending",
+          "reviewed": 0,
+          "required": 227,
+          "secondReviewed": 0,
+          "disagreements": 0,
+          "criticalFlags": 0,
+          "distinctReviewers": 0
+        },
+        "latencyMs": {
+          "p50": 0.2141000000119675,
+          "p95": 4042.32779999997
+        },
+        "latencyByLength": {
+          "short": {
+            "measurements": 270,
+            "uniqueFixtures": 270,
+            "p50": 0.21109999995678663,
+            "p95": 4107.51099999994
+          },
+          "medium": {
+            "measurements": 0,
+            "uniqueFixtures": 0,
+            "p50": null,
+            "p95": null
+          },
+          "long": {
+            "measurements": 10,
+            "uniqueFixtures": 10,
+            "p50": 5.270599999988917,
+            "p95": 6.284600000013597
+          }
+        },
+        "generation": {
+          "measurements": 30,
+          "outputTokensP50": 256,
+          "outputCharactersP50": 864,
+          "ttftMsP50": 1013.8873000000603,
+          "ttftMsP95": 1772.5187999999616,
+          "tokenizationMsP50": 8.139499999990221,
+          "streamedTokensPerSecondP50": 61.958580930673826,
+          "throughputDefinition": "Generated tokens / streaming-request duration including network overhead; native server timings retained when available"
+        },
+        "failuresByReason": {
+          "EDITOR_INSTRUCTION_AMBIGUOUS": 10,
+          "TRUNCATED": 26,
+          "EMPTY_REFUSAL_OR_REPETITION": 2,
+          "CLAUSE_AMBIGUOUS": 15
+        }
+      },
+      "speed": {
+        "records": 240,
+        "uniqueFixtures": 24,
+        "qualityBasis": "First observed result per model/method/prompt/fixture; repetitions are latency and stability measurements only",
+        "provisionalRewriteCoverage": {
+          "numerator": 2,
+          "denominator": 10,
+          "rate": 0.2,
+          "ci95": [
+            0.056680947980693314,
+            0.5098431532792765
+          ]
+        },
+        "falsePositiveEdits": {
+          "numerator": 0,
+          "denominator": 8,
+          "rate": 0,
+          "ci95": [
+            0,
+            0.3244156195108769
+          ]
+        },
+        "protectedFailures": {
+          "numerator": 0,
+          "denominator": 2,
+          "rate": 0,
+          "ci95": [
+            0,
+            0.6576280471103807
+          ]
+        },
+        "exactConstraintFailures": {
+          "numerator": 0,
+          "denominator": 2,
+          "rate": 0,
+          "ci95": [
+            0,
+            0.6576280471103807
+          ]
+        },
+        "reviewOrError": {
+          "numerator": 22,
+          "denominator": 24,
+          "rate": 0.9166666666666666,
+          "ci95": [
+            0.741507847985494,
+            0.9768416721570266
+          ]
+        },
+        "measurementReviewOrError": {
+          "numerator": 220,
+          "denominator": 240,
+          "confidenceInterval": null,
+          "reason": "Repeated measurements are correlated"
+        },
+        "acceptedCriticalErrors": {
+          "numerator": null,
+          "denominator": 0,
+          "reason": "No human-approved outputs; intent fidelity unreviewed"
+        },
+        "humanReview": {
+          "status": "pending",
+          "reviewed": 0,
+          "required": 20,
+          "secondReviewed": 0,
+          "disagreements": 0,
+          "criticalFlags": 0,
+          "distinctReviewers": 0
+        },
+        "latencyMs": {
+          "p50": 3405.3062000004575,
+          "p95": 11756.167100000195
+        },
+        "latencyByLength": {
+          "short": {
+            "measurements": 220,
+            "uniqueFixtures": 22,
+            "p50": 3363.7598999999464,
+            "p95": 4431.219700000249
+          },
+          "medium": {
+            "measurements": 0,
+            "uniqueFixtures": 0,
+            "p50": null,
+            "p95": null
+          },
+          "long": {
+            "measurements": 20,
+            "uniqueFixtures": 2,
+            "p50": 12480.146300000139,
+            "p95": 19507.982499999925
+          }
+        },
+        "generation": {
+          "measurements": 240,
+          "outputTokensP50": 256,
+          "outputCharactersP50": 904,
+          "ttftMsP50": 785.6184000000358,
+          "ttftMsP95": 5531.946200000122,
+          "tokenizationMsP50": 6.615999999456108,
+          "streamedTokensPerSecondP50": 64.64092119775933,
+          "throughputDefinition": "Generated tokens / streaming-request duration including network overhead; native server timings retained when available"
+        },
+        "failuresByReason": {
+          "TRUNCATED": 150,
+          "INVALID_PLACEHOLDERS": 70
+        }
+      },
+      "hybridSpeed": {
+        "records": 240,
+        "uniqueFixtures": 24,
+        "qualityBasis": "First observed result per model/method/prompt/fixture; repetitions are latency and stability measurements only",
+        "provisionalRewriteCoverage": {
+          "numerator": 10,
+          "denominator": 10,
+          "rate": 1,
+          "ci95": [
+            0.7224598312333834,
+            1
+          ]
+        },
+        "falsePositiveEdits": {
+          "numerator": 0,
+          "denominator": 8,
+          "rate": 0,
+          "ci95": [
+            0,
+            0.3244156195108769
+          ]
+        },
+        "protectedFailures": {
+          "numerator": 0,
+          "denominator": 18,
+          "rate": 0,
+          "ci95": [
+            0,
+            0.1758845505823749
+          ]
+        },
+        "exactConstraintFailures": {
+          "numerator": 0,
+          "denominator": 18,
+          "rate": 0,
+          "ci95": [
+            0,
+            0.1758845505823749
+          ]
+        },
+        "reviewOrError": {
+          "numerator": 6,
+          "denominator": 24,
+          "rate": 0.25,
+          "ci95": [
+            0.1199920347934233,
+            0.4489982531210644
+          ]
+        },
+        "measurementReviewOrError": {
+          "numerator": 60,
+          "denominator": 240,
+          "confidenceInterval": null,
+          "reason": "Repeated measurements are correlated"
+        },
+        "acceptedCriticalErrors": {
+          "numerator": null,
+          "denominator": 0,
+          "reason": "No human-approved outputs; intent fidelity unreviewed"
+        },
+        "humanReview": {
+          "status": "pending",
+          "reviewed": 0,
+          "required": 180,
+          "secondReviewed": 0,
+          "disagreements": 0,
+          "criticalFlags": 0,
+          "distinctReviewers": 0
+        },
+        "latencyMs": {
+          "p50": 0.17509999964386225,
+          "p95": 0.7801000000908971
+        },
+        "latencyByLength": {
+          "short": {
+            "measurements": 220,
+            "uniqueFixtures": 22,
+            "p50": 0.16700000036507845,
+            "p95": 0.30480000004172325
+          },
+          "medium": {
+            "measurements": 0,
+            "uniqueFixtures": 0,
+            "p50": null,
+            "p95": null
+          },
+          "long": {
+            "measurements": 20,
+            "uniqueFixtures": 2,
+            "p50": 0.795099999755621,
+            "p95": 0.9398000007495284
+          }
+        },
+        "generation": {
+          "measurements": 0,
+          "outputTokensP50": null,
+          "outputCharactersP50": null,
+          "ttftMsP50": null,
+          "ttftMsP95": null,
+          "tokenizationMsP50": null,
+          "streamedTokensPerSecondP50": null,
+          "throughputDefinition": "Generated tokens / streaming-request duration including network overhead; native server timings retained when available"
+        },
+        "failuresByReason": {
+          "CLAUSE_AMBIGUOUS": 40,
+          "EDITOR_INSTRUCTION_AMBIGUOUS": 20
+        }
+      },
+      "memory": {
+        "startupMs": 475.6642999998294,
+        "metric": "Windows working set/private bytes",
+        "intervalMs": 250,
+        "samples": 3561,
+        "residentBudgetDefinition": "Inference child + Node wrapper; Windows measurement-helper memory excluded. Shared pages can be double-counted.",
+        "measurementEnabled": true,
+        "childPeakBytes": 222507008,
+        "childPrivatePeakBytes": 154345472,
+        "wrapperPeakRssBytes": 68161536,
+        "sampledTreePeakBytes": 290033664,
+        "limitations": "Sampled peaks can miss spikes; sampler starts asynchronously; mmap/page cache is OS dependent. No OS cache clearing."
+      }
+    },
+    {
+      "id": "smol-360m-q4km",
+      "bytes": 270590880,
+      "revision": "7be6f65f1db715fe5dc5a4634c0d459b4eed42ec",
+      "sha256": "2fa3f013dcdd7b99f9b237717fa0b12d75bbb89984cc1274be1471a465bac9c2",
+      "quality": {
+        "records": 280,
+        "uniqueFixtures": 280,
+        "qualityBasis": "First observed result per model/method/prompt/fixture; repetitions are latency and stability measurements only",
+        "provisionalRewriteCoverage": {
+          "numerator": 10,
+          "denominator": 150,
+          "rate": 0.06666666666666667,
+          "ci95": [
+            0.03661146073480972,
+            0.11836352652481316
+          ]
+        },
+        "falsePositiveEdits": {
+          "numerator": 40,
+          "denominator": 95,
+          "rate": 0.42105263157894735,
+          "ci95": [
+            0.326736570637716,
+            0.5215054651043198
+          ]
+        },
+        "protectedFailures": {
+          "numerator": 0,
+          "denominator": 51,
+          "rate": 0,
+          "ci95": [
+            0,
+            0.07004901388726806
+          ]
+        },
+        "exactConstraintFailures": {
+          "numerator": 0,
+          "denominator": 51,
+          "rate": 0,
+          "ci95": [
+            0,
+            0.07004901388726806
+          ]
+        },
+        "reviewOrError": {
+          "numerator": 229,
+          "denominator": 280,
+          "rate": 0.8178571428571428,
+          "ci95": [
+            0.7684478467800743,
+            0.858662485179723
+          ]
+        },
+        "measurementReviewOrError": {
+          "numerator": 229,
+          "denominator": 280,
+          "confidenceInterval": null,
+          "reason": "Repeated measurements are correlated"
+        },
+        "acceptedCriticalErrors": {
+          "numerator": null,
+          "denominator": 0,
+          "reason": "No human-approved outputs; intent fidelity unreviewed"
+        },
+        "humanReview": {
+          "status": "pending",
+          "reviewed": 0,
+          "required": 51,
+          "secondReviewed": 0,
+          "disagreements": 0,
+          "criticalFlags": 0,
+          "distinctReviewers": 0
+        },
+        "latencyMs": {
+          "p50": 3967.314499999862,
+          "p95": 8849.193900000304
+        },
+        "latencyByLength": {
+          "short": {
+            "measurements": 270,
+            "uniqueFixtures": 270,
+            "p50": 4159.134700000053,
+            "p95": 8854.189199999906
+          },
+          "medium": {
+            "measurements": 0,
+            "uniqueFixtures": 0,
+            "p50": null,
+            "p95": null
+          },
+          "long": {
+            "measurements": 10,
+            "uniqueFixtures": 10,
+            "p50": 18.982499999925494,
+            "p95": 23.332899999804795
+          }
+        },
+        "generation": {
+          "measurements": 270,
+          "outputTokensP50": 79,
+          "outputCharactersP50": 296,
+          "ttftMsP50": 2162.478400000138,
+          "ttftMsP95": 2487.872999999905,
+          "tokenizationMsP50": 7.3325000000186265,
+          "streamedTokensPerSecondP50": 19.253153973555214,
+          "throughputDefinition": "Generated tokens / streaming-request duration including network overhead; native server timings retained when available"
+        },
+        "failuresByReason": {
+          "CONSTRAINT_CHANGED": 23,
+          "INVALID_PLACEHOLDERS": 92,
+          "TRUNCATED": 92,
+          "CONTEXT_OVERFLOW": 10,
+          "EMPTY_REFUSAL_OR_REPETITION": 12
+        }
+      },
+      "hybrid": {
+        "records": 280,
+        "uniqueFixtures": 280,
+        "qualityBasis": "First observed result per model/method/prompt/fixture; repetitions are latency and stability measurements only",
+        "provisionalRewriteCoverage": {
+          "numerator": 140,
+          "denominator": 150,
+          "rate": 0.9333333333333333,
+          "ci95": [
+            0.8816364734751868,
+            0.9633885392651903
+          ]
+        },
+        "falsePositiveEdits": {
+          "numerator": 0,
+          "denominator": 95,
+          "rate": 0,
+          "ci95": [
+            0,
+            0.038866226366226365
+          ]
+        },
+        "protectedFailures": {
+          "numerator": 0,
+          "denominator": 255,
+          "rate": 0,
+          "ci95": [
+            0,
+            0.014841509247354365
+          ]
+        },
+        "exactConstraintFailures": {
+          "numerator": 0,
+          "denominator": 255,
+          "rate": 0,
+          "ci95": [
+            0,
+            0.014841509247354365
+          ]
+        },
+        "reviewOrError": {
+          "numerator": 25,
+          "denominator": 280,
+          "rate": 0.08928571428571429,
+          "ci95": [
+            0.061207782272192535,
+            0.1284811146336874
+          ]
+        },
+        "measurementReviewOrError": {
+          "numerator": 25,
+          "denominator": 280,
+          "confidenceInterval": null,
+          "reason": "Repeated measurements are correlated"
+        },
+        "acceptedCriticalErrors": {
+          "numerator": null,
+          "denominator": 0,
+          "reason": "No human-approved outputs; intent fidelity unreviewed"
+        },
+        "humanReview": {
+          "status": "pending",
+          "reviewed": 0,
+          "required": 255,
+          "secondReviewed": 0,
+          "disagreements": 0,
+          "criticalFlags": 0,
+          "distinctReviewers": 0
+        },
+        "latencyMs": {
+          "p50": 0.18270000000484288,
+          "p95": 3213.2061999998987
+        },
+        "latencyByLength": {
+          "short": {
+            "measurements": 270,
+            "uniqueFixtures": 270,
+            "p50": 0.17779999994672835,
+            "p95": 3314.775299999863
+          },
+          "medium": {
+            "measurements": 0,
+            "uniqueFixtures": 0,
+            "p50": null,
+            "p95": null
+          },
+          "long": {
+            "measurements": 10,
+            "uniqueFixtures": 10,
+            "p50": 4.957999999867752,
+            "p95": 6.670200000051409
+          }
+        },
+        "generation": {
+          "measurements": 30,
+          "outputTokensP50": 25,
+          "outputCharactersP50": 81,
+          "ttftMsP50": 2603.0534999999218,
+          "ttftMsP95": 2999.809200000018,
+          "tokenizationMsP50": 7.233099999837577,
+          "streamedTokensPerSecondP50": 8.162085967986965,
+          "throughputDefinition": "Generated tokens / streaming-request duration including network overhead; native server timings retained when available"
+        },
+        "failuresByReason": {
+          "EDITOR_INSTRUCTION_AMBIGUOUS": 10,
+          "CLAUSE_AMBIGUOUS": 15
+        }
+      },
+      "speed": {
+        "records": 240,
+        "uniqueFixtures": 24,
+        "qualityBasis": "First observed result per model/method/prompt/fixture; repetitions are latency and stability measurements only",
+        "provisionalRewriteCoverage": {
+          "numerator": 4,
+          "denominator": 10,
+          "rate": 0.4,
+          "ci95": [
+            0.16817758120350967,
+            0.6873304525498135
+          ]
+        },
+        "falsePositiveEdits": {
+          "numerator": 6,
+          "denominator": 8,
+          "rate": 0.75,
+          "ci95": [
+            0.40926987910258916,
+            0.9285223111419724
+          ]
+        },
+        "protectedFailures": {
+          "numerator": 0,
+          "denominator": 14,
+          "rate": 0,
+          "ci95": [
+            0,
+            0.21531701192718142
+          ]
+        },
+        "exactConstraintFailures": {
+          "numerator": 0,
+          "denominator": 14,
+          "rate": 0,
+          "ci95": [
+            0,
+            0.21531701192718142
+          ]
+        },
+        "reviewOrError": {
+          "numerator": 10,
+          "denominator": 24,
+          "rate": 0.4166666666666667,
+          "ci95": [
+            0.24467347246538232,
+            0.6116566235061137
+          ]
+        },
+        "measurementReviewOrError": {
+          "numerator": 100,
+          "denominator": 240,
+          "confidenceInterval": null,
+          "reason": "Repeated measurements are correlated"
+        },
+        "acceptedCriticalErrors": {
+          "numerator": null,
+          "denominator": 0,
+          "reason": "No human-approved outputs; intent fidelity unreviewed"
+        },
+        "humanReview": {
+          "status": "pending",
+          "reviewed": 0,
+          "required": 140,
+          "secondReviewed": 0,
+          "disagreements": 0,
+          "criticalFlags": 0,
+          "distinctReviewers": 0
+        },
+        "latencyMs": {
+          "p50": 3256.4632000001147,
+          "p95": 15702.992300000042
+        },
+        "latencyByLength": {
+          "short": {
+            "measurements": 220,
+            "uniqueFixtures": 22,
+            "p50": 3185.7841999996454,
+            "p95": 6048.478000000119
+          },
+          "medium": {
+            "measurements": 0,
+            "uniqueFixtures": 0,
+            "p50": null,
+            "p95": null
+          },
+          "long": {
+            "measurements": 20,
+            "uniqueFixtures": 2,
+            "p50": 16243.03790000081,
+            "p95": 18944.6735000005
+          }
+        },
+        "generation": {
+          "measurements": 240,
+          "outputTokensP50": 25,
+          "outputCharactersP50": 81,
+          "ttftMsP50": 2341.012999999337,
+          "ttftMsP95": 14919.513399999589,
+          "tokenizationMsP50": 7.553600000217557,
+          "streamedTokensPerSecondP50": 10.21745482137776,
+          "throughputDefinition": "Generated tokens / streaming-request duration including network overhead; native server timings retained when available"
+        },
+        "failuresByReason": {
+          "INVALID_PLACEHOLDERS": 60,
+          "CONSTRAINT_CHANGED": 10,
+          "EMPTY_REFUSAL_OR_REPETITION": 30
+        }
+      },
+      "hybridSpeed": {
+        "records": 240,
+        "uniqueFixtures": 24,
+        "qualityBasis": "First observed result per model/method/prompt/fixture; repetitions are latency and stability measurements only",
+        "provisionalRewriteCoverage": {
+          "numerator": 10,
+          "denominator": 10,
+          "rate": 1,
+          "ci95": [
+            0.7224598312333834,
+            1
+          ]
+        },
+        "falsePositiveEdits": {
+          "numerator": 0,
+          "denominator": 8,
+          "rate": 0,
+          "ci95": [
+            0,
+            0.3244156195108769
+          ]
+        },
+        "protectedFailures": {
+          "numerator": 0,
+          "denominator": 18,
+          "rate": 0,
+          "ci95": [
+            0,
+            0.1758845505823749
+          ]
+        },
+        "exactConstraintFailures": {
+          "numerator": 0,
+          "denominator": 18,
+          "rate": 0,
+          "ci95": [
+            0,
+            0.1758845505823749
+          ]
+        },
+        "reviewOrError": {
+          "numerator": 6,
+          "denominator": 24,
+          "rate": 0.25,
+          "ci95": [
+            0.1199920347934233,
+            0.4489982531210644
+          ]
+        },
+        "measurementReviewOrError": {
+          "numerator": 60,
+          "denominator": 240,
+          "confidenceInterval": null,
+          "reason": "Repeated measurements are correlated"
+        },
+        "acceptedCriticalErrors": {
+          "numerator": null,
+          "denominator": 0,
+          "reason": "No human-approved outputs; intent fidelity unreviewed"
+        },
+        "humanReview": {
+          "status": "pending",
+          "reviewed": 0,
+          "required": 180,
+          "secondReviewed": 0,
+          "disagreements": 0,
+          "criticalFlags": 0,
+          "distinctReviewers": 0
+        },
+        "latencyMs": {
+          "p50": 0.18940000049769878,
+          "p95": 0.7949000000953674
+        },
+        "latencyByLength": {
+          "short": {
+            "measurements": 220,
+            "uniqueFixtures": 22,
+            "p50": 0.18570000026375055,
+            "p95": 0.3022999996319413
+          },
+          "medium": {
+            "measurements": 0,
+            "uniqueFixtures": 0,
+            "p50": null,
+            "p95": null
+          },
+          "long": {
+            "measurements": 20,
+            "uniqueFixtures": 2,
+            "p50": 0.8719000006094575,
+            "p95": 1.0640000002458692
+          }
+        },
+        "generation": {
+          "measurements": 0,
+          "outputTokensP50": null,
+          "outputCharactersP50": null,
+          "ttftMsP50": null,
+          "ttftMsP95": null,
+          "tokenizationMsP50": null,
+          "streamedTokensPerSecondP50": null,
+          "throughputDefinition": "Generated tokens / streaming-request duration including network overhead; native server timings retained when available"
+        },
+        "failuresByReason": {
+          "CLAUSE_AMBIGUOUS": 40,
+          "EDITOR_INSTRUCTION_AMBIGUOUS": 20
+        }
+      },
+      "memory": {
+        "startupMs": 576.2008000006899,
+        "metric": "Windows working set/private bytes",
+        "intervalMs": 250,
+        "samples": 4257,
+        "residentBudgetDefinition": "Inference child + Node wrapper; Windows measurement-helper memory excluded. Shared pages can be double-counted.",
+        "measurementEnabled": true,
+        "childPeakBytes": 446164992,
+        "childPrivatePeakBytes": 218365952,
+        "wrapperPeakRssBytes": 51810304,
+        "sampledTreePeakBytes": 497958912,
+        "limitations": "Sampled peaks can miss spikes; sampler starts asynchronously; mmap/page cache is OS dependent. No OS cache clearing."
+      }
+    },
+    {
+      "id": "qwen3-06b-q4km",
+      "bytes": 396705472,
+      "revision": "50968a4468ef4233ed78cd7c3de230dd1d61a56b",
+      "sha256": "ac2d97712095a558e31573f62f466a3f9d93990898b0ec79d7c974c1780d524a",
+      "quality": {
+        "records": 280,
+        "uniqueFixtures": 280,
+        "qualityBasis": "First observed result per model/method/prompt/fixture; repetitions are latency and stability measurements only",
+        "provisionalRewriteCoverage": {
+          "numerator": 60,
+          "denominator": 150,
+          "rate": 0.4,
+          "ci95": [
+            0.3250419076797755,
+            0.4799523201493683
+          ]
+        },
+        "falsePositiveEdits": {
+          "numerator": 60,
+          "denominator": 95,
+          "rate": 0.631578947368421,
+          "ci95": [
+            0.5312293801072515,
+            0.7217005603226888
+          ]
+        },
+        "protectedFailures": {
+          "numerator": 0,
+          "denominator": 155,
+          "rate": 0,
+          "ci95": [
+            0,
+            0.024185100124904303
+          ]
+        },
+        "exactConstraintFailures": {
+          "numerator": 0,
+          "denominator": 155,
+          "rate": 0,
+          "ci95": [
+            0,
+            0.024185100124904303
+          ]
+        },
+        "reviewOrError": {
+          "numerator": 125,
+          "denominator": 280,
+          "rate": 0.44642857142857145,
+          "ci95": [
+            0.3893153929860551,
+            0.504991854436451
+          ]
+        },
+        "measurementReviewOrError": {
+          "numerator": 125,
+          "denominator": 280,
+          "confidenceInterval": null,
+          "reason": "Repeated measurements are correlated"
+        },
+        "acceptedCriticalErrors": {
+          "numerator": null,
+          "denominator": 0,
+          "reason": "No human-approved outputs; intent fidelity unreviewed"
+        },
+        "humanReview": {
+          "status": "pending",
+          "reviewed": 0,
+          "required": 155,
+          "secondReviewed": 0,
+          "disagreements": 0,
+          "criticalFlags": 0,
+          "distinctReviewers": 0
+        },
+        "latencyMs": {
+          "p50": 1914.7716999999247,
+          "p95": 2678.969700000249
+        },
+        "latencyByLength": {
+          "short": {
+            "measurements": 270,
+            "uniqueFixtures": 270,
+            "p50": 1930.0778000000864,
+            "p95": 2724.313000000082
+          },
+          "medium": {
+            "measurements": 0,
+            "uniqueFixtures": 0,
+            "p50": null,
+            "p95": null
+          },
+          "long": {
+            "measurements": 10,
+            "uniqueFixtures": 10,
+            "p50": 23.472100000362843,
+            "p95": 29.746899999678135
+          }
+        },
+        "generation": {
+          "measurements": 270,
+          "outputTokensP50": 28,
+          "outputCharactersP50": 88,
+          "ttftMsP50": 1236.8422999996692,
+          "ttftMsP95": 1698.177799999714,
+          "tokenizationMsP50": 9.195700000040233,
+          "streamedTokensPerSecondP50": 15.044907846331558,
+          "throughputDefinition": "Generated tokens / streaming-request duration including network overhead; native server timings retained when available"
+        },
+        "failuresByReason": {
+          "CONSTRAINT_CHANGED": 70,
+          "INVALID_PLACEHOLDERS": 45,
+          "CONTEXT_OVERFLOW": 10
+        }
+      },
+      "hybrid": {
+        "records": 280,
+        "uniqueFixtures": 280,
+        "qualityBasis": "First observed result per model/method/prompt/fixture; repetitions are latency and stability measurements only",
+        "provisionalRewriteCoverage": {
+          "numerator": 150,
+          "denominator": 150,
+          "rate": 1,
+          "ci95": [
+            0.9750288608542812,
+            1
+          ]
+        },
+        "falsePositiveEdits": {
+          "numerator": 0,
+          "denominator": 95,
+          "rate": 0,
+          "ci95": [
+            0,
+            0.038866226366226365
+          ]
+        },
+        "protectedFailures": {
+          "numerator": 0,
+          "denominator": 255,
+          "rate": 0,
+          "ci95": [
+            0,
+            0.014841509247354365
+          ]
+        },
+        "exactConstraintFailures": {
+          "numerator": 0,
+          "denominator": 255,
+          "rate": 0,
+          "ci95": [
+            0,
+            0.014841509247354365
+          ]
+        },
+        "reviewOrError": {
+          "numerator": 25,
+          "denominator": 280,
+          "rate": 0.08928571428571429,
+          "ci95": [
+            0.061207782272192535,
+            0.1284811146336874
+          ]
+        },
+        "measurementReviewOrError": {
+          "numerator": 25,
+          "denominator": 280,
+          "confidenceInterval": null,
+          "reason": "Repeated measurements are correlated"
+        },
+        "acceptedCriticalErrors": {
+          "numerator": null,
+          "denominator": 0,
+          "reason": "No human-approved outputs; intent fidelity unreviewed"
+        },
+        "humanReview": {
+          "status": "pending",
+          "reviewed": 0,
+          "required": 255,
+          "secondReviewed": 0,
+          "disagreements": 0,
+          "criticalFlags": 0,
+          "distinctReviewers": 0
+        },
+        "latencyMs": {
+          "p50": 0.1946000000461936,
+          "p95": 2251.672899999656
+        },
+        "latencyByLength": {
+          "short": {
+            "measurements": 270,
+            "uniqueFixtures": 270,
+            "p50": 0.19240000005811453,
+            "p95": 2314.0547000002116
+          },
+          "medium": {
+            "measurements": 0,
+            "uniqueFixtures": 0,
+            "p50": null,
+            "p95": null
+          },
+          "long": {
+            "measurements": 10,
+            "uniqueFixtures": 10,
+            "p50": 5.244899999815971,
+            "p95": 7.406400000210851
+          }
+        },
+        "generation": {
+          "measurements": 30,
+          "outputTokensP50": 25,
+          "outputCharactersP50": 81,
+          "ttftMsP50": 1393.3075999999419,
+          "ttftMsP95": 1959.8860999997705,
+          "tokenizationMsP50": 9.429299999959767,
+          "streamedTokensPerSecondP50": 12.965625430137314,
+          "throughputDefinition": "Generated tokens / streaming-request duration including network overhead; native server timings retained when available"
+        },
+        "failuresByReason": {
+          "EDITOR_INSTRUCTION_AMBIGUOUS": 10,
+          "CLAUSE_AMBIGUOUS": 15
+        }
+      },
+      "speed": {
+        "records": 240,
+        "uniqueFixtures": 24,
+        "qualityBasis": "First observed result per model/method/prompt/fixture; repetitions are latency and stability measurements only",
+        "provisionalRewriteCoverage": {
+          "numerator": 4,
+          "denominator": 10,
+          "rate": 0.4,
+          "ci95": [
+            0.16817758120350967,
+            0.6873304525498135
+          ]
+        },
+        "falsePositiveEdits": {
+          "numerator": 4,
+          "denominator": 8,
+          "rate": 0.5,
+          "ci95": [
+            0.21521252682444186,
+            0.7847874731755582
+          ]
+        },
+        "protectedFailures": {
+          "numerator": 0,
+          "denominator": 16,
+          "rate": 0,
+          "ci95": [
+            0,
+            0.19361341827271994
+          ]
+        },
+        "exactConstraintFailures": {
+          "numerator": 0,
+          "denominator": 16,
+          "rate": 0,
+          "ci95": [
+            0,
+            0.19361341827271994
+          ]
+        },
+        "reviewOrError": {
+          "numerator": 8,
+          "denominator": 24,
+          "rate": 0.3333333333333333,
+          "ci95": [
+            0.17971978688379642,
+            0.5329404050591954
+          ]
+        },
+        "measurementReviewOrError": {
+          "numerator": 80,
+          "denominator": 240,
+          "confidenceInterval": null,
+          "reason": "Repeated measurements are correlated"
+        },
+        "acceptedCriticalErrors": {
+          "numerator": null,
+          "denominator": 0,
+          "reason": "No human-approved outputs; intent fidelity unreviewed"
+        },
+        "humanReview": {
+          "status": "pending",
+          "reviewed": 0,
+          "required": 160,
+          "secondReviewed": 0,
+          "disagreements": 0,
+          "criticalFlags": 0,
+          "distinctReviewers": 0
+        },
+        "latencyMs": {
+          "p50": 1604.7735999999568,
+          "p95": 9831.041199999861
+        },
+        "latencyByLength": {
+          "short": {
+            "measurements": 220,
+            "uniqueFixtures": 22,
+            "p50": 1581.2853999994695,
+            "p95": 2506.268299999647
+          },
+          "medium": {
+            "measurements": 0,
+            "uniqueFixtures": 0,
+            "p50": null,
+            "p95": null
+          },
+          "long": {
+            "measurements": 20,
+            "uniqueFixtures": 2,
+            "p50": 9844.779400000349,
+            "p95": 10762.093100000173
+          }
+        },
+        "generation": {
+          "measurements": 240,
+          "outputTokensP50": 25,
+          "outputCharactersP50": 81,
+          "ttftMsP50": 1072.2383000003174,
+          "ttftMsP95": 8791.683899999596,
+          "tokenizationMsP50": 7.989500000141561,
+          "streamedTokensPerSecondP50": 16.499211766661052,
+          "throughputDefinition": "Generated tokens / streaming-request duration including network overhead; native server timings retained when available"
+        },
+        "failuresByReason": {
+          "CONSTRAINT_CHANGED": 60,
+          "INVALID_PLACEHOLDERS": 20
+        }
+      },
+      "hybridSpeed": {
+        "records": 240,
+        "uniqueFixtures": 24,
+        "qualityBasis": "First observed result per model/method/prompt/fixture; repetitions are latency and stability measurements only",
+        "provisionalRewriteCoverage": {
+          "numerator": 10,
+          "denominator": 10,
+          "rate": 1,
+          "ci95": [
+            0.7224598312333834,
+            1
+          ]
+        },
+        "falsePositiveEdits": {
+          "numerator": 0,
+          "denominator": 8,
+          "rate": 0,
+          "ci95": [
+            0,
+            0.3244156195108769
+          ]
+        },
+        "protectedFailures": {
+          "numerator": 0,
+          "denominator": 18,
+          "rate": 0,
+          "ci95": [
+            0,
+            0.1758845505823749
+          ]
+        },
+        "exactConstraintFailures": {
+          "numerator": 0,
+          "denominator": 18,
+          "rate": 0,
+          "ci95": [
+            0,
+            0.1758845505823749
+          ]
+        },
+        "reviewOrError": {
+          "numerator": 6,
+          "denominator": 24,
+          "rate": 0.25,
+          "ci95": [
+            0.1199920347934233,
+            0.4489982531210644
+          ]
+        },
+        "measurementReviewOrError": {
+          "numerator": 60,
+          "denominator": 240,
+          "confidenceInterval": null,
+          "reason": "Repeated measurements are correlated"
+        },
+        "acceptedCriticalErrors": {
+          "numerator": null,
+          "denominator": 0,
+          "reason": "No human-approved outputs; intent fidelity unreviewed"
+        },
+        "humanReview": {
+          "status": "pending",
+          "reviewed": 0,
+          "required": 180,
+          "secondReviewed": 0,
+          "disagreements": 0,
+          "criticalFlags": 0,
+          "distinctReviewers": 0
+        },
+        "latencyMs": {
+          "p50": 0.14859999995678663,
+          "p95": 0.5584000004455447
+        },
+        "latencyByLength": {
+          "short": {
+            "measurements": 220,
+            "uniqueFixtures": 22,
+            "p50": 0.13950000051409006,
+            "p95": 0.22950000036507845
+          },
+          "medium": {
+            "measurements": 0,
+            "uniqueFixtures": 0,
+            "p50": null,
+            "p95": null
+          },
+          "long": {
+            "measurements": 20,
+            "uniqueFixtures": 2,
+            "p50": 0.7319999998435378,
+            "p95": 0.8316000001505017
+          }
+        },
+        "generation": {
+          "measurements": 0,
+          "outputTokensP50": null,
+          "outputCharactersP50": null,
+          "ttftMsP50": null,
+          "ttftMsP95": null,
+          "tokenizationMsP50": null,
+          "streamedTokensPerSecondP50": null,
+          "throughputDefinition": "Generated tokens / streaming-request duration including network overhead; native server timings retained when available"
+        },
+        "failuresByReason": {
+          "CLAUSE_AMBIGUOUS": 40,
+          "EDITOR_INSTRUCTION_AMBIGUOUS": 20
+        }
+      },
+      "memory": {
+        "startupMs": 1244.377199999988,
+        "metric": "Windows working set/private bytes",
+        "intervalMs": 250,
+        "samples": 2206,
+        "residentBudgetDefinition": "Inference child + Node wrapper; Windows measurement-helper memory excluded. Shared pages can be double-counted.",
+        "measurementEnabled": true,
+        "childPeakBytes": 949854208,
+        "childPrivatePeakBytes": 604471296,
+        "wrapperPeakRssBytes": 68612096,
+        "sampledTreePeakBytes": 1017868288,
+        "limitations": "Sampled peaks can miss spikes; sampler starts asynchronously; mmap/page cache is OS dependent. No OS cache clearing."
+      }
+    },
+    {
+      "id": "qwen35-08b-q4km",
+      "bytes": 532517120,
+      "revision": "6ab461498e2023f6e3c1baea90a8f0fe38ab64d0",
+      "sha256": "bd258782e35f7f458f8aced1adc053e6e92e89bc735ba3be89d38a06121dc517",
+      "quality": {
+        "records": 280,
+        "uniqueFixtures": 280,
+        "qualityBasis": "First observed result per model/method/prompt/fixture; repetitions are latency and stability measurements only",
+        "provisionalRewriteCoverage": {
+          "numerator": 3,
+          "denominator": 150,
+          "rate": 0.02,
+          "ci95": [
+            0.006824627715648315,
+            0.05714766586424165
+          ]
+        },
+        "falsePositiveEdits": {
+          "numerator": 50,
+          "denominator": 95,
+          "rate": 0.5263157894736842,
+          "ci95": [
+            0.4268517068062815,
+            0.6237342812797065
+          ]
+        },
+        "protectedFailures": {
+          "numerator": 0,
+          "denominator": 113,
+          "rate": 0,
+          "ci95": [
+            0,
+            0.03287870073672391
+          ]
+        },
+        "exactConstraintFailures": {
+          "numerator": 0,
+          "denominator": 113,
+          "rate": 0,
+          "ci95": [
+            0,
+            0.03287870073672391
+          ]
+        },
+        "reviewOrError": {
+          "numerator": 167,
+          "denominator": 280,
+          "rate": 0.5964285714285714,
+          "ci95": [
+            0.5380320398766418,
+            0.6522149147628473
+          ]
+        },
+        "measurementReviewOrError": {
+          "numerator": 167,
+          "denominator": 280,
+          "confidenceInterval": null,
+          "reason": "Repeated measurements are correlated"
+        },
+        "acceptedCriticalErrors": {
+          "numerator": null,
+          "denominator": 0,
+          "reason": "No human-approved outputs; intent fidelity unreviewed"
+        },
+        "humanReview": {
+          "status": "pending",
+          "reviewed": 0,
+          "required": 113,
+          "secondReviewed": 0,
+          "disagreements": 0,
+          "criticalFlags": 0,
+          "distinctReviewers": 0
+        },
+        "latencyMs": {
+          "p50": 2656.3587000002153,
+          "p95": 3983.9621000001207
+        },
+        "latencyByLength": {
+          "short": {
+            "measurements": 270,
+            "uniqueFixtures": 270,
+            "p50": 2668.969000000041,
+            "p95": 4177.1716000000015
+          },
+          "medium": {
+            "measurements": 0,
+            "uniqueFixtures": 0,
+            "p50": null,
+            "p95": null
+          },
+          "long": {
+            "measurements": 10,
+            "uniqueFixtures": 10,
+            "p50": 26.729499999899417,
+            "p95": 33.48380000004545
+          }
+        },
+        "generation": {
+          "measurements": 270,
+          "outputTokensP50": 25,
+          "outputCharactersP50": 81,
+          "ttftMsP50": 1714.7456000000238,
+          "ttftMsP95": 2441.943700000178,
+          "tokenizationMsP50": 9.191199999768287,
+          "streamedTokensPerSecondP50": 10.458939083709609,
+          "throughputDefinition": "Generated tokens / streaming-request duration including network overhead; native server timings retained when available"
+        },
+        "failuresByReason": {
+          "REWRITE_NOT_COMPLETED": 67,
+          "CONSTRAINT_CHANGED": 40,
+          "INVALID_PLACEHOLDERS": 50,
+          "CONTEXT_OVERFLOW": 10
+        }
+      },
+      "hybrid": {
+        "records": 280,
+        "uniqueFixtures": 280,
+        "qualityBasis": "First observed result per model/method/prompt/fixture; repetitions are latency and stability measurements only",
+        "provisionalRewriteCoverage": {
+          "numerator": 140,
+          "denominator": 150,
+          "rate": 0.9333333333333333,
+          "ci95": [
+            0.8816364734751868,
+            0.9633885392651903
+          ]
+        },
+        "falsePositiveEdits": {
+          "numerator": 0,
+          "denominator": 95,
+          "rate": 0,
+          "ci95": [
+            0,
+            0.038866226366226365
+          ]
+        },
+        "protectedFailures": {
+          "numerator": 0,
+          "denominator": 255,
+          "rate": 0,
+          "ci95": [
+            0,
+            0.014841509247354365
+          ]
+        },
+        "exactConstraintFailures": {
+          "numerator": 0,
+          "denominator": 255,
+          "rate": 0,
+          "ci95": [
+            0,
+            0.014841509247354365
+          ]
+        },
+        "reviewOrError": {
+          "numerator": 25,
+          "denominator": 280,
+          "rate": 0.08928571428571429,
+          "ci95": [
+            0.061207782272192535,
+            0.1284811146336874
+          ]
+        },
+        "measurementReviewOrError": {
+          "numerator": 25,
+          "denominator": 280,
+          "confidenceInterval": null,
+          "reason": "Repeated measurements are correlated"
+        },
+        "acceptedCriticalErrors": {
+          "numerator": null,
+          "denominator": 0,
+          "reason": "No human-approved outputs; intent fidelity unreviewed"
+        },
+        "humanReview": {
+          "status": "pending",
+          "reviewed": 0,
+          "required": 255,
+          "secondReviewed": 0,
+          "disagreements": 0,
+          "criticalFlags": 0,
+          "distinctReviewers": 0
+        },
+        "latencyMs": {
+          "p50": 0.1945999995805323,
+          "p95": 2901.1052000001073
+        },
+        "latencyByLength": {
+          "short": {
+            "measurements": 270,
+            "uniqueFixtures": 270,
+            "p50": 0.19089999981224537,
+            "p95": 3033.0438999999315
+          },
+          "medium": {
+            "measurements": 0,
+            "uniqueFixtures": 0,
+            "p50": null,
+            "p95": null
+          },
+          "long": {
+            "measurements": 10,
+            "uniqueFixtures": 10,
+            "p50": 5.196599999908358,
+            "p95": 7.387499999720603
+          }
+        },
+        "generation": {
+          "measurements": 30,
+          "outputTokensP50": 25,
+          "outputCharactersP50": 81,
+          "ttftMsP50": 2056.415500000119,
+          "ttftMsP95": 3006.191899999976,
+          "tokenizationMsP50": 9.150100000202656,
+          "streamedTokensPerSecondP50": 8.192787967402767,
+          "throughputDefinition": "Generated tokens / streaming-request duration including network overhead; native server timings retained when available"
+        },
+        "failuresByReason": {
+          "EDITOR_INSTRUCTION_AMBIGUOUS": 10,
+          "CLAUSE_AMBIGUOUS": 15
+        }
+      },
+      "speed": {
+        "records": 240,
+        "uniqueFixtures": 24,
+        "qualityBasis": "First observed result per model/method/prompt/fixture; repetitions are latency and stability measurements only",
+        "provisionalRewriteCoverage": {
+          "numerator": 2,
+          "denominator": 10,
+          "rate": 0.2,
+          "ci95": [
+            0.056680947980693314,
+            0.5098431532792765
+          ]
+        },
+        "falsePositiveEdits": {
+          "numerator": 4,
+          "denominator": 8,
+          "rate": 0.5,
+          "ci95": [
+            0.21521252682444186,
+            0.7847874731755582
+          ]
+        },
+        "protectedFailures": {
+          "numerator": 0,
+          "denominator": 14,
+          "rate": 0,
+          "ci95": [
+            0,
+            0.21531701192718142
+          ]
+        },
+        "exactConstraintFailures": {
+          "numerator": 0,
+          "denominator": 14,
+          "rate": 0,
+          "ci95": [
+            0,
+            0.21531701192718142
+          ]
+        },
+        "reviewOrError": {
+          "numerator": 10,
+          "denominator": 24,
+          "rate": 0.4166666666666667,
+          "ci95": [
+            0.24467347246538232,
+            0.6116566235061137
+          ]
+        },
+        "measurementReviewOrError": {
+          "numerator": 100,
+          "denominator": 240,
+          "confidenceInterval": null,
+          "reason": "Repeated measurements are correlated"
+        },
+        "acceptedCriticalErrors": {
+          "numerator": null,
+          "denominator": 0,
+          "reason": "No human-approved outputs; intent fidelity unreviewed"
+        },
+        "humanReview": {
+          "status": "pending",
+          "reviewed": 0,
+          "required": 140,
+          "secondReviewed": 0,
+          "disagreements": 0,
+          "criticalFlags": 0,
+          "distinctReviewers": 0
+        },
+        "latencyMs": {
+          "p50": 2094.3565999995917,
+          "p95": 9984.465900000185
+        },
+        "latencyByLength": {
+          "short": {
+            "measurements": 220,
+            "uniqueFixtures": 22,
+            "p50": 2066.196699999273,
+            "p95": 4140.086000000127
+          },
+          "medium": {
+            "measurements": 0,
+            "uniqueFixtures": 0,
+            "p50": null,
+            "p95": null
+          },
+          "long": {
+            "measurements": 20,
+            "uniqueFixtures": 2,
+            "p50": 9994.472199999727,
+            "p95": 11247.520699999295
+          }
+        },
+        "generation": {
+          "measurements": 240,
+          "outputTokensP50": 20,
+          "outputCharactersP50": 51,
+          "ttftMsP50": 1452.8991000000387,
+          "ttftMsP95": 9417.744800000452,
+          "tokenizationMsP50": 8.00510000064969,
+          "streamedTokensPerSecondP50": 10.358244548936355,
+          "throughputDefinition": "Generated tokens / streaming-request duration including network overhead; native server timings retained when available"
+        },
+        "failuresByReason": {
+          "REWRITE_NOT_COMPLETED": 60,
+          "INVALID_PLACEHOLDERS": 40
+        }
+      },
+      "hybridSpeed": {
+        "records": 240,
+        "uniqueFixtures": 24,
+        "qualityBasis": "First observed result per model/method/prompt/fixture; repetitions are latency and stability measurements only",
+        "provisionalRewriteCoverage": {
+          "numerator": 10,
+          "denominator": 10,
+          "rate": 1,
+          "ci95": [
+            0.7224598312333834,
+            1
+          ]
+        },
+        "falsePositiveEdits": {
+          "numerator": 0,
+          "denominator": 8,
+          "rate": 0,
+          "ci95": [
+            0,
+            0.3244156195108769
+          ]
+        },
+        "protectedFailures": {
+          "numerator": 0,
+          "denominator": 18,
+          "rate": 0,
+          "ci95": [
+            0,
+            0.1758845505823749
+          ]
+        },
+        "exactConstraintFailures": {
+          "numerator": 0,
+          "denominator": 18,
+          "rate": 0,
+          "ci95": [
+            0,
+            0.1758845505823749
+          ]
+        },
+        "reviewOrError": {
+          "numerator": 6,
+          "denominator": 24,
+          "rate": 0.25,
+          "ci95": [
+            0.1199920347934233,
+            0.4489982531210644
+          ]
+        },
+        "measurementReviewOrError": {
+          "numerator": 60,
+          "denominator": 240,
+          "confidenceInterval": null,
+          "reason": "Repeated measurements are correlated"
+        },
+        "acceptedCriticalErrors": {
+          "numerator": null,
+          "denominator": 0,
+          "reason": "No human-approved outputs; intent fidelity unreviewed"
+        },
+        "humanReview": {
+          "status": "pending",
+          "reviewed": 0,
+          "required": 180,
+          "secondReviewed": 0,
+          "disagreements": 0,
+          "criticalFlags": 0,
+          "distinctReviewers": 0
+        },
+        "latencyMs": {
+          "p50": 0.15189999993890524,
+          "p95": 0.709400000050664
+        },
+        "latencyByLength": {
+          "short": {
+            "measurements": 220,
+            "uniqueFixtures": 22,
+            "p50": 0.1463000001385808,
+            "p95": 0.2494999999180436
+          },
+          "medium": {
+            "measurements": 0,
+            "uniqueFixtures": 0,
+            "p50": null,
+            "p95": null
+          },
+          "long": {
+            "measurements": 20,
+            "uniqueFixtures": 2,
+            "p50": 0.7424999997019768,
+            "p95": 1.002199999988079
+          }
+        },
+        "generation": {
+          "measurements": 0,
+          "outputTokensP50": null,
+          "outputCharactersP50": null,
+          "ttftMsP50": null,
+          "ttftMsP95": null,
+          "tokenizationMsP50": null,
+          "streamedTokensPerSecondP50": null,
+          "throughputDefinition": "Generated tokens / streaming-request duration including network overhead; native server timings retained when available"
+        },
+        "failuresByReason": {
+          "CLAUSE_AMBIGUOUS": 40,
+          "EDITOR_INSTRUCTION_AMBIGUOUS": 20
+        }
+      },
+      "memory": {
+        "startupMs": 1662.9826999995857,
+        "metric": "Windows working set/private bytes",
+        "intervalMs": 250,
+        "samples": 2726,
+        "residentBudgetDefinition": "Inference child + Node wrapper; Windows measurement-helper memory excluded. Shared pages can be double-counted.",
+        "measurementEnabled": true,
+        "childPeakBytes": 966393856,
+        "childPrivatePeakBytes": 875704320,
+        "wrapperPeakRssBytes": 54034432,
+        "sampledTreePeakBytes": 1020260352,
+        "limitations": "Sampled peaks can miss spikes; sampler starts asynchronously; mmap/page cache is OS dependent. No OS cache clearing."
+      }
+    }
+  ],
+  "rules": {
+    "records": 280,
+    "uniqueFixtures": 280,
+    "qualityBasis": "First observed result per model/method/prompt/fixture; repetitions are latency and stability measurements only",
+    "provisionalRewriteCoverage": {
+      "numerator": 120,
+      "denominator": 150,
+      "rate": 0.8,
+      "ci95": [
+        0.7288572445686363,
+        0.8561600719439326
+      ]
+    },
+    "falsePositiveEdits": {
+      "numerator": 0,
+      "denominator": 95,
+      "rate": 0,
+      "ci95": [
+        0,
+        0.038866226366226365
+      ]
+    },
+    "protectedFailures": {
+      "numerator": 0,
+      "denominator": 225,
+      "rate": 0,
+      "ci95": [
+        1.734723475976807e-18,
+        0.016787157579740745
+      ]
+    },
+    "exactConstraintFailures": {
+      "numerator": 0,
+      "denominator": 225,
+      "rate": 0,
+      "ci95": [
+        1.734723475976807e-18,
+        0.016787157579740745
+      ]
+    },
+    "reviewOrError": {
+      "numerator": 55,
+      "denominator": 280,
+      "rate": 0.19642857142857142,
+      "ci95": [
+        0.15413466232102815,
+        0.2469397397398396
+      ]
+    },
+    "measurementReviewOrError": {
+      "numerator": 55,
+      "denominator": 280,
+      "confidenceInterval": null,
+      "reason": "Repeated measurements are correlated"
+    },
+    "acceptedCriticalErrors": {
+      "numerator": null,
+      "denominator": 0,
+      "reason": "No human-approved outputs; intent fidelity unreviewed"
+    },
+    "humanReview": {
+      "status": "pending",
+      "reviewed": 0,
+      "required": 225,
+      "secondReviewed": 0,
+      "disagreements": 0,
+      "criticalFlags": 0,
+      "distinctReviewers": 0
+    },
+    "latencyMs": {
+      "p50": 0.083500000000015,
+      "p95": 0.37340000000000373
+    },
+    "latencyByLength": {
+      "short": {
+        "measurements": 270,
+        "uniqueFixtures": 270,
+        "p50": 0.080600000000004,
+        "p95": 0.17580000000003793
+      },
+      "medium": {
+        "measurements": 0,
+        "uniqueFixtures": 0,
+        "p50": null,
+        "p95": null
+      },
+      "long": {
+        "measurements": 10,
+        "uniqueFixtures": 10,
+        "p50": 1.2907000000000153,
+        "p95": 2.392499999999984
+      }
+    },
+    "generation": {
+      "measurements": 0,
+      "outputTokensP50": null,
+      "outputCharactersP50": null,
+      "ttftMsP50": null,
+      "ttftMsP95": null,
+      "tokenizationMsP50": null,
+      "streamedTokensPerSecondP50": null,
+      "throughputDefinition": "Generated tokens / streaming-request duration including network overhead; native server timings retained when available"
+    },
+    "failuresByReason": {
+      "CLAUSE_AMBIGUOUS": 45,
+      "EDITOR_INSTRUCTION_AMBIGUOUS": 10
+    }
+  },
+  "pairedComparisons": [
+    {
+      "prompt": "examples",
+      "comparison": {
+        "reference": "smol-135m-q4km",
+        "candidate": "smol-360m-q4km",
+        "pairs": 150,
+        "groups": 15,
+        "difference": 0.06666666666666667,
+        "ci95": [
+          0,
+          0.2
+        ],
+        "seed": 42,
+        "bootstrapReplicates": 500,
+        "metric": "Paired provisional structural/lexical rewrite proxy; human intent unreviewed"
+      }
+    },
+    {
+      "prompt": "examples",
+      "comparison": {
+        "reference": "smol-135m-q4km",
+        "candidate": "qwen3-06b-q4km",
+        "pairs": 150,
+        "groups": 15,
+        "difference": 0.4,
+        "ci95": [
+          0.2,
+          0.6666666666666666
+        ],
+        "seed": 42,
+        "bootstrapReplicates": 500,
+        "metric": "Paired provisional structural/lexical rewrite proxy; human intent unreviewed"
+      }
+    },
+    {
+      "prompt": "examples",
+      "comparison": {
+        "reference": "smol-135m-q4km",
+        "candidate": "qwen35-08b-q4km",
+        "pairs": 150,
+        "groups": 15,
+        "difference": 0.02,
+        "ci95": [
+          0,
+          0.06
+        ],
+        "seed": 42,
+        "bootstrapReplicates": 500,
+        "metric": "Paired provisional structural/lexical rewrite proxy; human intent unreviewed"
+      }
+    }
+  ],
+  "qualityGates": {
+    "smol-135m-q4km/protected/examples": {
+      "evidence": {
+        "annotationsReviewed": false,
+        "outputsReviewed": 0,
+        "outputsRequired": 10,
+        "stratifiedSecondReview": false,
+        "unresolvedDisagreements": 0,
+        "criticalFlags": 0,
+        "protectedErrors": 0,
+        "toneSuccess": null,
+        "rewriteCoverage": null,
+        "keepEditRate": 0,
+        "shortP50Ms": 3363.7598999999464,
+        "shortP95Ms": 4431.219700000249
+      },
+      "status": "pending_human_evidence",
+      "missing": [
+        "ANNOTATIONS_UNREVIEWED",
+        "OUTPUT_REVIEW_INCOMPLETE",
+        "SECOND_REVIEW_INCOMPLETE"
+      ],
+      "failures": [],
+      "qualityEligible": false,
+      "latencyTargetMet": false,
+      "automaticSubmissionAuthorized": false
+    },
+    "smol-135m-q4km/hybrid/examples": {
+      "evidence": {
+        "annotationsReviewed": false,
+        "outputsReviewed": 0,
+        "outputsRequired": 227,
+        "stratifiedSecondReview": false,
+        "unresolvedDisagreements": 0,
+        "criticalFlags": 0,
+        "protectedErrors": 0,
+        "toneSuccess": null,
+        "rewriteCoverage": null,
+        "keepEditRate": 0,
+        "shortP50Ms": 0.16700000036507845,
+        "shortP95Ms": 0.30480000004172325
+      },
+      "status": "pending_human_evidence",
+      "missing": [
+        "ANNOTATIONS_UNREVIEWED",
+        "OUTPUT_REVIEW_INCOMPLETE",
+        "SECOND_REVIEW_INCOMPLETE"
+      ],
+      "failures": [],
+      "qualityEligible": false,
+      "latencyTargetMet": true,
+      "automaticSubmissionAuthorized": false
+    },
+    "smol-360m-q4km/protected/examples": {
+      "evidence": {
+        "annotationsReviewed": false,
+        "outputsReviewed": 0,
+        "outputsRequired": 51,
+        "stratifiedSecondReview": false,
+        "unresolvedDisagreements": 0,
+        "criticalFlags": 0,
+        "protectedErrors": 0,
+        "toneSuccess": null,
+        "rewriteCoverage": null,
+        "keepEditRate": 0.42105263157894735,
+        "shortP50Ms": 3185.7841999996454,
+        "shortP95Ms": 6048.478000000119
+      },
+      "status": "pending_human_evidence",
+      "missing": [
+        "ANNOTATIONS_UNREVIEWED",
+        "OUTPUT_REVIEW_INCOMPLETE",
+        "SECOND_REVIEW_INCOMPLETE"
+      ],
+      "failures": [
+        "KEEP_EDITS_ABOVE_1_PERCENT"
+      ],
+      "qualityEligible": false,
+      "latencyTargetMet": false,
+      "automaticSubmissionAuthorized": false
+    },
+    "smol-360m-q4km/hybrid/examples": {
+      "evidence": {
+        "annotationsReviewed": false,
+        "outputsReviewed": 0,
+        "outputsRequired": 255,
+        "stratifiedSecondReview": false,
+        "unresolvedDisagreements": 0,
+        "criticalFlags": 0,
+        "protectedErrors": 0,
+        "toneSuccess": null,
+        "rewriteCoverage": null,
+        "keepEditRate": 0,
+        "shortP50Ms": 0.18570000026375055,
+        "shortP95Ms": 0.3022999996319413
+      },
+      "status": "pending_human_evidence",
+      "missing": [
+        "ANNOTATIONS_UNREVIEWED",
+        "OUTPUT_REVIEW_INCOMPLETE",
+        "SECOND_REVIEW_INCOMPLETE"
+      ],
+      "failures": [],
+      "qualityEligible": false,
+      "latencyTargetMet": true,
+      "automaticSubmissionAuthorized": false
+    },
+    "qwen3-06b-q4km/protected/examples": {
+      "evidence": {
+        "annotationsReviewed": false,
+        "outputsReviewed": 0,
+        "outputsRequired": 155,
+        "stratifiedSecondReview": false,
+        "unresolvedDisagreements": 0,
+        "criticalFlags": 0,
+        "protectedErrors": 0,
+        "toneSuccess": null,
+        "rewriteCoverage": null,
+        "keepEditRate": 0.631578947368421,
+        "shortP50Ms": 1581.2853999994695,
+        "shortP95Ms": 2506.268299999647
+      },
+      "status": "pending_human_evidence",
+      "missing": [
+        "ANNOTATIONS_UNREVIEWED",
+        "OUTPUT_REVIEW_INCOMPLETE",
+        "SECOND_REVIEW_INCOMPLETE"
+      ],
+      "failures": [
+        "KEEP_EDITS_ABOVE_1_PERCENT"
+      ],
+      "qualityEligible": false,
+      "latencyTargetMet": true,
+      "automaticSubmissionAuthorized": false
+    },
+    "qwen3-06b-q4km/hybrid/examples": {
+      "evidence": {
+        "annotationsReviewed": false,
+        "outputsReviewed": 0,
+        "outputsRequired": 255,
+        "stratifiedSecondReview": false,
+        "unresolvedDisagreements": 0,
+        "criticalFlags": 0,
+        "protectedErrors": 0,
+        "toneSuccess": null,
+        "rewriteCoverage": null,
+        "keepEditRate": 0,
+        "shortP50Ms": 0.13950000051409006,
+        "shortP95Ms": 0.22950000036507845
+      },
+      "status": "pending_human_evidence",
+      "missing": [
+        "ANNOTATIONS_UNREVIEWED",
+        "OUTPUT_REVIEW_INCOMPLETE",
+        "SECOND_REVIEW_INCOMPLETE"
+      ],
+      "failures": [],
+      "qualityEligible": false,
+      "latencyTargetMet": true,
+      "automaticSubmissionAuthorized": false
+    },
+    "qwen35-08b-q4km/protected/examples": {
+      "evidence": {
+        "annotationsReviewed": false,
+        "outputsReviewed": 0,
+        "outputsRequired": 113,
+        "stratifiedSecondReview": false,
+        "unresolvedDisagreements": 0,
+        "criticalFlags": 0,
+        "protectedErrors": 0,
+        "toneSuccess": null,
+        "rewriteCoverage": null,
+        "keepEditRate": 0.5263157894736842,
+        "shortP50Ms": 2066.196699999273,
+        "shortP95Ms": 4140.086000000127
+      },
+      "status": "pending_human_evidence",
+      "missing": [
+        "ANNOTATIONS_UNREVIEWED",
+        "OUTPUT_REVIEW_INCOMPLETE",
+        "SECOND_REVIEW_INCOMPLETE"
+      ],
+      "failures": [
+        "KEEP_EDITS_ABOVE_1_PERCENT"
+      ],
+      "qualityEligible": false,
+      "latencyTargetMet": false,
+      "automaticSubmissionAuthorized": false
+    },
+    "qwen35-08b-q4km/hybrid/examples": {
+      "evidence": {
+        "annotationsReviewed": false,
+        "outputsReviewed": 0,
+        "outputsRequired": 255,
+        "stratifiedSecondReview": false,
+        "unresolvedDisagreements": 0,
+        "criticalFlags": 0,
+        "protectedErrors": 0,
+        "toneSuccess": null,
+        "rewriteCoverage": null,
+        "keepEditRate": 0,
+        "shortP50Ms": 0.1463000001385808,
+        "shortP95Ms": 0.2494999999180436
+      },
+      "status": "pending_human_evidence",
+      "missing": [
+        "ANNOTATIONS_UNREVIEWED",
+        "OUTPUT_REVIEW_INCOMPLETE",
+        "SECOND_REVIEW_INCOMPLETE"
+      ],
+      "failures": [],
+      "qualityEligible": false,
+      "latencyTargetMet": true,
+      "automaticSubmissionAuthorized": false
+    }
+  },
+  "tested": {
+    "windows": "unit + mock wrapper + real CPU lifecycle + isolated installed hook tests executed; see verification receipt",
+    "linux": "untested",
+    "gpu": "untested / outside primary comparison",
+    "liveProvider": "not tested or invoked",
+    "browserVisualReview": "blocked file-URL preview; automated script/DOM escaping tests pass"
+  },
+  "limitations": [
+    "Agent-authored synthetic annotations; human fidelity review pending",
+    "Warm latency excludes model startup; hybrid includes rule bypasses",
+    "Windows measurements only; filesystem caches not cleared; uncontrolled CPU contention"
+  ]
+}

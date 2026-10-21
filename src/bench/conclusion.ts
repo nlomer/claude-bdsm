@@ -34,7 +34,7 @@ export async function conclusion(root: string): Promise<void> {
       linux: 'untested', gpu: 'untested / outside primary comparison', liveProvider: 'not tested or invoked', browserVisualReview: 'blocked file-URL preview; automated script/DOM escaping tests pass' } };
   await saveJson(resolve(root, 'plans/local-tone-editor/final-evidence.json'), evidence);
   await writePublicSummary(root, evidence);
-  const lines = ['# Measured benchmark results', '', `Generated ${evidence.completedAt}. **Provisional automatic metrics; human annotations, fidelity, tone and release approval remain pending.**`, '',
+  const lines = ['# Measured benchmark results', '', `Generated ${evidence.completedAt}. **Provisional automatic metrics; human annotations, fidelity, tone and automatic-model qualification remain pending.**`, '',
     `Full-run completeness: ${evidence.evaluationComplete}. Default: neutral rules with preview. Models remain explicit preview experiments.`, '',
     ...comparisonMarkdown(rows, rules)];
   lines.push('', `Installed runtime directory: ${runtimeDiskBytes} bytes, including the retained verified archive (${runtime.assets[process.platform]?.bytes} bytes). Weight bytes exclude runtime, Node, cards and application files.`, '',
@@ -43,6 +43,7 @@ export async function conclusion(root: string): Promise<void> {
     `Complete terminal-turn diagnostic: ${JSON.stringify(terminal.summary)}. ${terminal.definition}`, '',
     'The rewrite proxy requires a completed changed output, exact annotated task suffix/literals and lexical attack removal. It is not a human tone/fidelity rating. Each full report contains denominators, 95% Wilson intervals and paired group-bootstrap comparisons. Warm failures are retained in latency distributions.', '',
     '## Questions and recommendation', '',
+    `For the shipped hybrid pipeline, 360M is the smallest tested candidate above the provisional 90% rewrite-coverage threshold: ${rows[1]?.hybrid ? fraction(rows[1].hybrid.provisionalRewriteCoverage) : 'unknown'}. Qwen3-0.6B reached ${rows[2]?.hybrid ? fraction(rows[2].hybrid.provisionalRewriteCoverage) : 'unknown'} and had the lowest complete-terminal median among candidate-producing models in the three-run diagnostic. Neither result establishes human intent fidelity or a general speed guarantee. Keep rules as the default; choose explicit preview experiments based on storage/memory and measured latency.`, '',
     `The approximately 105 MB model loaded and ran. Its broad-rewrite proxy is ${rows[0]?.quality ? fraction(rows[0].quality.provisionalRewriteCoverage) : 'unavailable'}. This does not qualify it for automatic rewriting; exact eligible case classes still need human review.`, '',
     `The 360M upgrade's proxy is ${rows[1]?.quality ? fraction(rows[1].quality.provisionalRewriteCoverage) : 'unavailable'}, versus the 135M figure above. Its additional storage and measured memory/latency must be weighed against that provisional difference, not assumed useful merely because it is larger. See paired intervals before interpreting small differences.`, '',
     'Neither Qwen is selected as an automatic default. Their actual storage, latency, review rates and proxies appear above; improved automatic proxies would justify further preview review, not establish preserved intent or justify automatic submission.', '',

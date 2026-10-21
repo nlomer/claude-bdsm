@@ -87,6 +87,8 @@ node dist/cli.js sanitize --model smol-360m-q4km --mode hybrid --preview
 
 To inspect the absolute smallest tested experiment instead, substitute `smol-135m-q4km` in both commands. Only the model you name is downloaded.
 
+On one model-needed synthetic case, three complete cold CLI runs gave medians of **4.73 s for 360M** and **4.38 s for Qwen3-0.6B** (396.7 MB weights). The 135M produced no valid candidate in those runs. This includes loading, verification and cleanup; it is a small diagnostic, not a general speed guarantee. Qwen3 had the strongest hybrid rewrite proxy, while 360M used less storage and memory. All model outputs still need review.
+
 Hybrid mode checks rules and review conditions first, loading the model only when a bounded model rewrite is actually needed. The model is unloaded before waiting for approval or invoking Claude. Model-generated changes always require approval.
 
 Downloads are pinned and checked against exact byte counts and SHA-256. Model cards/licenses are saved beside their files. See [benchmark methodology](BENCHMARK.md) and [measured results](BENCHMARK-RESULTS.md) for quality, latency, memory, and limitations. A larger model is useful only if its measured results justify its cost.
