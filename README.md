@@ -1,145 +1,120 @@
 # claude-bdsm
 
-**Brutal Developer Sentiment Management — The Safe Word Protocol**
+**Brutal Developer Sentiment Management · The Safe Word Protocol**
 
-A Claude Code skill with a local companion for turning personal attacks into constructive feedback while protecting your code, commands, numbers, and constraints.
+Your code has bugs. Your prompt doesn't need a criminal record.
+
+Give your keyboard a tiny manners department: paste the spicy version, preview the civil version, then decide what to copy or send to Claude.
 
 ```text
-You idiot. Fix src/auth.ts; do not change the public API.
+You idiot. Fix src/auth.ts; do not change the API.
                          ↓
-I'm frustrated with the previous result. Fix src/auth.ts; do not change the public API.
+I'm frustrated with the previous result. Fix src/auth.ts; do not change the API.
 ```
 
-Runs locally on your CPU. Start with the instant rules engine; optional model experiments require separate downloads. You preview and approve the final text before it is passed to Claude.
+The insult gets a timeout. The task keeps its job.
 
-This is a preview-first release. Model experiments are provisional, and human fidelity review is pending. It is not an official compliance classifier or a promise that every insult will be detected.
+![The local manners department: original message, preview and friendly settings](docs/images/control-panel.png)
 
-The current rules are English-first. Unsupported languages and ambiguous cases require review rather than an automatic rewrite.
+## First date: setup
 
-## What you get
-
-- **Claude Code skill:** `/claude-bdsm` helps with setup, settings, and understanding local results.
-- **Local editor:** preserves literal content and makes narrowly bounded changes; uncertain cases require review.
-- **Claude wrapper:** reads your message locally and passes only approved final text to a one-turn Claude session.
-- **Optional hook:** blocks a problematic turn and offers a suggestion for manual resubmission.
-- **Personalities and local extras:** neutral, HR, Victorian, `/safeword`, playful rage scores, awards, and an offline aggregate dashboard.
-
-The skill itself cannot intercept text before Claude reads it. Enter private originals into the **local terminal editor/wrapper**, rather than pasting them into Claude and expecting a skill to remove them afterward. The hook also cannot replace a turn or erase all local history.
-
-## Requirements
-
-- Node.js **22.16+ within the 22.x line**; `.nvmrc` pins the setup version.
-- Windows x64 or Linux x64. Windows is tested; Linux execution remains unverified.
-- Git for cloning this repository.
-- Claude Code only if you want the skill, wrapper, or hook. The standalone editor needs no Claude account.
-
-No Python, GPU, Ollama, paid evaluation API, or cloud classifier is required. Dependency/model setup uses networking; installed editing has no cloud fallback.
-
-## Install
+Bring **Node.js 22.16+ (22.x)** and Git. Claude Code is optional unless you want to send directly to Claude.
 
 ```sh
 git clone https://github.com/nlomer/claude-bdsm.git
 cd claude-bdsm
-npm ci --ignore-scripts
-npm run build
-node dist/cli.js skills install
+npm run setup
 ```
 
-The last command creates `~/.claude/skills/claude-bdsm` and records this clone's location. It respects `CLAUDE_CONFIG_DIR`, refuses to overwrite an existing skill, and does not modify global hook settings. Keep the clone at that location.
+Setup installs locked development tools and builds the app. It offers the Claude skill and optional local AI; pressing Enter skips them. No GPU, Python, Ollama, cloud classifier or surprise subscription required.
 
-Restart Claude Code if necessary, then invoke:
+Unattended setup: `npm run setup -- --yes` builds only—no global skill or model downloads. If a step fails, fix the reported issue and rerun setup. Your settings stay put. Windows x64 is tested; Linux x64 execution remains unverified.
+
+## Open the manners department
+
+```sh
+npm start
+```
+
+Or **double-click `Start.cmd` on Windows** after setup. A local browser panel opens. Keep the launcher terminal running; Ctrl+C closes the app. Closing just the browser tab does not stop it.
+
+1. **Paste** your message. Multiline rants and code are welcome.
+2. **Preview** the peace treaty. Nothing has been sent to Claude.
+3. **Read** the result and check “I reviewed this exact text.”
+4. **Copy** it, or **Send to Claude** using the project folder chosen in Settings.
+
+Your original stays beside the preview. Editing input/settings invalidates approval. Uncertain cases ask you to rewrite instead of confidently mangling your task. Expired preview? Make a fresh one.
+
+Send uses your existing Claude account and permissions, with normal provider usage. It's a single turn with a readable reply, not a replacement Claude terminal. Cancelling an already-started send cannot unsend it.
+
+## Settings, minus the JSON homework
+
+Choose processing, style and Claude project once. The panel remembers them.
+
+| Processing | What you're signing up for |
+|---|---|
+| **Instant — recommended** | No model download. Narrow rules. Extremely small manners department. |
+| **Small local AI — experimental** | ~271 MB weights plus CPU runtime. For the adventurous minimalist. |
+| **Larger local AI — experimental** | ~397 MB weights plus CPU runtime. More room for diplomatic incidents. |
+
+Choosing a profile doesn't download anything. **Install selected AI** explains the download and asks first. Only that model is invited. Runtime adds about 24 MB to the download; installed memory/storage are larger than weight size.
+
+AI choices are experiments: automatic scores don't establish preserved intent. Small AI is the smallest tested hybrid above the provisional coverage threshold. The 105 MB candidate added little beyond rules and isn't a beginner preset. See [measured results](BENCHMARK-RESULTS.md) if you enjoy spreadsheets more than rage.
+
+Choose your diplomatic costume:
+
+- **Neutral:** let's just fix the bug.
+- **HR:** per my last emotional outburst.
+- **Victorian:** my esteemed computational associate.
+
+Styles affect narrowly validated emotional clauses, not your task. Start with **`/safeword`** for neutral tone and no jokes/awards. Rage scores are silly local heuristics, not therapy or HR certification.
+
+Preview stays on. Private diagnostic retention stays off by default. Advanced settings are there when needed; nobody has to memorize a model ID to use the app.
+
+## The Claude skill: your optional concierge
+
+Install it during setup or in the panel. Then, in Claude Code:
 
 ```text
 /claude-bdsm
 ```
 
-You can use the local editor immediately, without downloading a model:
+Ask it to check setup, explain settings or launch the editor. Keep the clone at its installed location. **Update skill** backs up an owned installation before replacing it; **Remove skill** moves it to a backup. Custom files are preserved. No global hooks are installed automatically.
+
+A skill cannot intercept a message before Claude reads it. Put private originals in the **local panel**, not into Claude followed by a magical “forget you saw that.” Magic is outside the dependency budget.
+
+## Where does my tantrum go?
+
+Editing runs locally on your CPU. Panel/model servers bind to loopback; no cloud editor fallback, hosted scripts or telemetry. Setup downloads need networking. **Send to Claude** is the explicit point where approved text goes to Claude.
+
+Messages aren't saved by default. Preferences and aggregate counters live in this clone's ignored `.local/`. Opt-in diagnostics contain private text until you delete them. The tab holds messages in memory; same-user browser/process access and OS swap remain outside this boundary.
+
+English-first, conservative, and occasionally confused. Quotes, intertwined instructions and unsupported languages may need your rewrite. It doesn't make conversations policy-proof, erase history or fix the bug for you. [Privacy details](PRIVACY.md).
+
+## Updates, repairs and other adult responsibilities
+
+Stop the launcher before updating:
 
 ```sh
-node dist/cli.js sanitize --preview
+git pull --ff-only
+npm run setup
 ```
 
-Type a message in the local terminal, inspect the result, and type `yes` to approve it. Even unchanged text requires approval when preview is enabled.
+Reopen with `npm start`. **Check status** explains selected-model/Claude readiness. No Claude? Copy still works. Failed model verification? Reinstall the selected AI or choose Instant. An unrelated skill already exists? It stays untouched.
 
-## Use with Claude Code
+To remove: stop the launcher, remove its skill through the panel if installed, then remove this clone after saving anything you want. Skill backups live under the Claude config directory's `skill-backups/`. No automatic cleanup eats your customizations.
 
-From this repository, choose the existing project directory that Claude should work in:
+## For people who read footnotes
 
-```sh
-node dist/cli.js chat --preview --cwd "../your-project"
-```
-
-The wrapper uses Claude's existing authentication and permission behavior. It adds no bypass flags, implicit session continuation, or stock-terminal emulation. Only the approved final text is passed through stdin. The one-turn response is Claude's structured JSON output.
-
-A native Claude executable must be available. On Windows, npm-installed native Claude is also recognized; use `--claude <native-path>` to select another installation. Shell shims such as `.cmd`, `.bat`, and `.ps1` are not launched by the wrapper.
-
-## Choose an optional model
-
-SmolLM2-135M-Instruct Q4_K_M is approximately **105.5 MB of weights**, excluding the runtime, Node, and working memory. Larger candidates are not installed by default.
-
-**Smallest does not mean sufficient:** the 135M hybrid passed the automatic rewrite proxy on 122/150 holdout cases, versus 120/150 for rules alone. It misses the proposed 90% coverage threshold. The 270.6 MB 360M hybrid reached 140/150 and is the smallest tested candidate above that provisional threshold; human fidelity review is still pending for every model. Use rules first and consult the [measured comparison](BENCHMARK-RESULTS.md) before downloading an experiment.
-
-```sh
-node dist/cli.js runtime install
-node dist/cli.js models install smol-360m-q4km
-node dist/cli.js sanitize --model smol-360m-q4km --mode hybrid --preview
-```
-
-To inspect the absolute smallest tested experiment instead, substitute `smol-135m-q4km` in both commands. Only the model you name is downloaded.
-
-On one model-needed synthetic case, three complete cold CLI runs gave medians of **4.73 s for 360M** and **4.38 s for Qwen3-0.6B** (396.7 MB weights). The 135M produced no valid candidate in those runs. This includes loading, verification and cleanup; it is a small diagnostic, not a general speed guarantee. Qwen3 had the strongest hybrid rewrite proxy, while 360M used less storage and memory. All model outputs still need review.
-
-Hybrid mode checks rules and review conditions first, loading the model only when a bounded model rewrite is actually needed. The model is unloaded before waiting for approval or invoking Claude. Model-generated changes always require approval.
-
-Downloads are pinned and checked against exact byte counts and SHA-256. Model cards/licenses are saved beside their files. See [benchmark methodology](BENCHMARK.md) and [measured results](BENCHMARK-RESULTS.md) for quality, latency, memory, and limitations. A larger model is useful only if its measured results justify its cost.
-
-## Tone and local settings
-
-```sh
-node dist/cli.js sanitize --tone hr --preview
-node dist/cli.js sanitize --tone victorian --preview
-node dist/cli.js config
-node dist/cli.js config --set '{"personality":"hr","preview":true}'
-node dist/cli.js stats --html
-```
-
-A leading `/safeword` forces neutral tone and suppresses jokes/awards. Styles change only validated emotional prefixes, not your task. General profanity is kept by default; optional cleanup is a separate consent setting. Rage scores and awards are playful heuristics, not psychological or policy-risk assessments.
-
-The dashboard contains aggregate counters. Personal text is not retained by default. Explicit diagnostic retention stores private text under `.local/diagnostics/`; see [privacy and storage](PRIVACY.md).
-
-## Piped input and JSON
-
-```sh
-node dist/cli.js sanitize --stdin --json
-```
-
-JSON mode returns the typed result, including a candidate when available. Review the displayed candidate and its SHA-256, then repeat the same input with `--approve <displayed-hash>` to authorize that exact output. A stale hash cannot approve a changed candidate.
-
-Text mode keeps stdout empty while review/approval is pending. UI goes to stderr. Exit codes: `0` approved success, `1` operational/input failure, `2` usage or blocking-hook failure, `3` review/approval required. The wrapper otherwise preserves Claude's exit code; exit 0 alone does not prove a provider request occurred.
-
-## Optional hook
-
-[examples/hooks.settings.json](examples/hooks.settings.json) is a template you can review and adapt. Use an absolute path to this clone's `dist/cli.js` when integrating another project. No hook is installed automatically.
-
-The command hook suggests manual resubmission and uses failure-blocking behavior supported by Claude Code 2.1.295+. Tested with 2.1.305 against an isolated fake provider. See [integration details](INTEGRATION.md) for setup and history limitations.
-
-## Update or remove
-
-Pull updates and rebuild with `npm ci --ignore-scripts` and `npm run build`. Back up customizations before replacing the installed skill folder and running `skills install` again.
-
-Remove the installed `claude-bdsm` skill folder to disable the skill. Settings/stats/opt-in diagnostics live in this clone's `.local/`; downloaded artifacts live in `models/` and `.tools/`. Nothing is silently uploaded or removed.
-
-## Development and reproducibility
+[Advanced CLI and hooks](docs/ADVANCED.md) · [Claude integration](INTEGRATION.md) · [Benchmark methodology](BENCHMARK.md) · [Measured results](BENCHMARK-RESULTS.md)
 
 ```sh
 npm test
 npm run test:integration
 ```
 
-Integration tests that need installed artifacts are skipped when unavailable. The installed-Claude checks use a fake loopback provider, not a live account. Run native-runtime tests after releasing the benchmark's exclusive runtime lock.
-
-The [benchmark guide](BENCHMARK.md) covers the four-model comparison, frozen synthetic fixtures, blinded review, resource definitions, and reproducible commands. Generated reports and model weights are excluded from Git.
+Tests use synthetic text, temporary profiles and fake downstream providers. Native tests skip without downloaded artifacts. Human model-fidelity review is pending; Linux/live-provider execution remains unverified.
 
 ## License
 
-[MIT](LICENSE). Downloaded models and the native runtime retain their own upstream licenses.
+[MIT](LICENSE). Models/runtime keep their [upstream licenses](THIRD_PARTY_NOTICES.md). Manners sold separately. Actually, no: this whole thing is free.

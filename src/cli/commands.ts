@@ -18,12 +18,20 @@ import { readInput } from './input.js';
 import { installation } from './installation.js';
 import { reviewCommand } from './review.js';
 import { installSkill } from '../integrations/skill-installer.js';
+import { maintainSkill, skillStatus } from '../integrations/skill-maintenance.adapter.js';
+import { appStatus } from '../app/status.controller.js';
 export async function commands(root: string, args: Options): Promise<number> {
   if (['sanitize', 'chat'].includes(args.command)) return sanitizeCommand(root, args);
   if (args.command === 'doctor') { process.stdout.write(JSON.stringify({ ...doctor(), ...await installation(root) }, null, 2) + '\n'); return doctor().nodeSupported ? 0 : 1; }
+  if (args.command === 'status') { const status = await appStatus(root); process.stdout.write(`${status.message}\n${status.claudeMessage}\nOpen the panel: npm start\n`); return 0; }
   if (args.command === 'runtime' && args.positional.join(' ') === 'install') { await installRuntime(root); return 0; }
   if (args.command === 'skills' && args.positional.join(' ') === 'install') {
     process.stdout.write(await installSkill(root, option(args, '--target')) + '\n'); return 0;
+  }
+  if (args.command === 'skills' && ['update', 'remove', 'status'].includes(args.positional.join(' '))) {
+    const action = args.positional[0]!;
+    const result = action === 'status' ? await skillStatus(root, option(args, '--target')) : await maintainSkill(root, action as 'update' | 'remove', option(args, '--target'));
+    process.stdout.write(JSON.stringify(result, null, 2) + '\n'); return 0;
   }
   if (args.command === 'models' && args.positional[0] === 'install') {
     await installModels(root, args.flags.has('--all-benchmark') ? registry.map(m => m.id) : args.positional.slice(1)); return 0;

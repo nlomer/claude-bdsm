@@ -1,5 +1,19 @@
 # Privacy and failure boundary
 
+The optional browser panel binds to `127.0.0.1` on a random port. API calls require a
+random launch token and the exact host/origin. The token travels in the initial URL
+fragment (not HTTP request paths) and tab session storage; don't share launch URLs.
+Message bodies stay in request bodies and page memory, never URLs or tab storage.
+No external panel scripts, fonts or analytics are loaded. Clipboard copying is explicit.
+Closing the tab does not stop the launcher; Ctrl+C stops its local server.
+
+Panel preferences save profile, tone and chosen paths, not message bodies. The panel
+always requires preview approval. Tickets expire after five minutes, change with
+settings/input, and are consumed once for Send. Cancellation cannot undo an already
+started provider request. Unknown/blocked/zero-usage Claude envelopes are not labelled
+as verified successful replies. Skill update/removal preserves previous owned files
+under the Claude configuration directory's `skill-backups/`.
+
 Setup downloads official runtime archives, exact model artifacts and cards/licenses.
 Runtime inference uses only an authenticated `127.0.0.1` sidecar with its UI disabled.
 There is no cloud fallback, remote classifier/judge, telemetry, hosted font or dashboard script.
