@@ -47,5 +47,9 @@ test('panel protocol blocks cross-origin/stale/replayed actions and renders iner
     const second = (await (await request('preview', { text: 'Fix the test.' })).json()).data;
     await request('cancel'); assert.equal((await request('copy', { id: second.id, approved: true })).status, 400);
     assert.equal((await request('preview', { text: 'a'.repeat(263000) })).status, 400);
+    assert.equal((await request('quit', { confirmed: false })).status, 400);
+    assert.equal((await request('quit', { confirmed: true })).status, 200);
+    await new Promise(yes => setTimeout(yes, 150));
+    await assert.rejects(fetch(panel.origin));
   } finally { await panel.close(); await rm(root, { recursive: true, force: true }); }
 });

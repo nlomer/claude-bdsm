@@ -36,7 +36,7 @@ Unattended setup: `npm run setup -- --yes` builds only—no global skill or mode
 npm start
 ```
 
-Or **double-click `Start.cmd` on Windows** after setup. A local browser panel opens. Keep the launcher terminal running; Ctrl+C closes the app. Closing just the browser tab does not stop it.
+Or **double-click `Start.cmd` on Windows** after setup. A local browser panel opens. Keep the launcher terminal running. **Stop app** or Ctrl+C closes the app; closing just the browser tab does not stop it.
 
 1. **Paste** your message. Multiline rants and code are welcome.
 2. **Preview** the peace treaty. Nothing has been sent to Claude.
@@ -49,7 +49,7 @@ Send uses your existing Claude account and permissions, with normal provider usa
 
 ## Settings, minus the JSON homework
 
-Choose processing, style and Claude project once. The panel remembers them.
+Choose processing, style and Claude project once. They save on your next Preview, or immediately with **Save settings**. The panel remembers them next time.
 
 | Processing | What you're signing up for |
 |---|---|

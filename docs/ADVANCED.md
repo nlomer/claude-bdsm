@@ -43,4 +43,6 @@ Destination respects `CLAUDE_CONFIG_DIR`. Install refuses existing folders. Upda
 
 One operation runs at a time. Preview/copy never call Claude. Tickets expire after five minutes; edits, cancellation or saved settings invalidate them. Sends consume a ticket once, including failed attempts. Cancellation cannot undo a provider request already started; inspect its outcome before retrying. Closing the tab doesn't stop the launcher.
 
+Use **Stop app** or Ctrl+C to shut down the local server. Stop app requires confirmation and cancels active local work; it cannot recall an approved turn already sent to Claude.
+
 [Benchmark guide](../BENCHMARK.md) · [Aggregate evidence](benchmark-summary.json) · [Privacy](../PRIVACY.md). UI changes do not retune frozen prompts or rerun research. Generated reports, models, binaries, private settings and plans stay out of Git.

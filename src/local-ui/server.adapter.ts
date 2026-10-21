@@ -6,7 +6,7 @@ import { resolve } from 'node:path';
 import { friendlyError } from './errors.format.js';
 const assets: Record<string, [string, string]> = {
   '/': ['index.html', 'text/html'], '/app.js': ['app.js', 'text/javascript'], '/settings.js': ['settings.js', 'text/javascript'],
-  '/api.js': ['api.js', 'text/javascript'], '/styles.css': ['styles.css', 'text/css']
+  '/api.js': ['api.js', 'text/javascript'], '/confirm.js': ['confirm.js', 'text/javascript'], '/styles.css': ['styles.css', 'text/css']
 };
 async function body(req: IncomingMessage) {
   let bytes = 0; const chunks: Buffer[] = [];

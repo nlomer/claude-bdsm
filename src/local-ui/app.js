@@ -1,6 +1,7 @@
 // Controller: a visible preview/approval journey; edits invalidate tickets and sends are single-use.
 import { api, $, notice } from './api.js';
 import { bindSettings } from './settings.js';
+import { askConfirmation } from './confirm.js';
 let ticket, status, working = false, invalidation = Promise.resolve();
 function buttons() {
   const approved = !!ticket?.canApprove && $('approve').checked && !working;
@@ -24,7 +25,9 @@ async function preview() {
   if (working) return;
   busy(true, true); const pending = invalidate(); notice('Drafting the peace treaty. Originals stay local.');
   try {
-    await pending; ticket = await api('preview', { text: $('message').value });
+    await pending;
+    if (settings.dirty) { await settings.save(); await invalidation; busy(true, true); }
+    ticket = await api('preview', { text: $('message').value });
     const result = ticket.result;
     $('empty').hidden = result.output !== undefined; $('edited').hidden = result.output === undefined;
     $('edited').textContent = result.output ?? ''; $('technical').textContent = JSON.stringify(result, null, 2);
@@ -54,6 +57,11 @@ $('send').onclick = async () => {
     $('response-section').hidden = false; $('response').textContent = result.text; $('raw-response').textContent = result.raw;
     notice(result.successful ? 'Claude replied. The task lives to see another day.' : result.text, !result.successful);
   } catch (error) { notice(error.message + ' Preview again before another send attempt.', true); } finally { $('approve').checked = false; busy(false); }
+};
+$('quit').onclick = async () => {
+  if (!await askConfirmation('Stop the local app? A Claude send already started may have reached the provider.')) return;
+  try { const result = await api('quit', { confirmed: true }); busy(true); $('cancel').disabled = true; $('quit').disabled = true; notice(result.message); }
+  catch (error) { notice(error.message, true); }
 };
 const settings = bindSettings(invalidate, busy, value => { status = value; busy(working); });
 settings.refresh().then(value => { notice(value.message); busy(false); }).catch(error => notice(error.message, true));
